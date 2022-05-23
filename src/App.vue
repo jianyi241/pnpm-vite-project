@@ -1,3 +1,13 @@
+<template>
+    <div class="app-main">
+        <nav>
+            <router-link to="/">Home</router-link>
+            <router-link to="/about">About</router-link>
+        </nav>
+        <router-view></router-view>
+    </div>
+</template>
+
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
@@ -21,14 +31,6 @@ import { mapGetters } from "vuex";
   }
 
 </script>
-
-<template>
-<!--  <img alt="Vue logo" src="./assets/logo.png" />-->
-<!--  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />-->
-  <button @click="calc('reduce')">-</button>
-  <h1>{{globalNum}}</h1>
-  <button @click="calc('plus')">+</button>
-</template>
 
 <style>
 #app {
