@@ -15,5 +15,7 @@ binding(app)
 app.use(store)
 app.use(router)
 app.use(Antd)
-
+app.config.errorHandler =  (err, instance, info) => {
+    // 向追踪服务报告错误
+}
 app.mount('#app')

@@ -13,20 +13,18 @@
         <HelloWorld msg="计算结果" :count="calcPlus"></HelloWorld>
         <button v-bind="$attrs" @click="clickFunc($event)">点击提示</button>
         <button>attr 点击</button>
-        <Transition>
-            <Modal v-show="showModal">
-                <template #title>
-                    <div></div>
-                </template>
-                <template #main>
-                    <div>content</div>
-                </template>
-                <template #footer>
-                    <a-button>确认</a-button>
-                    <a-button>取消</a-button>
-                </template>
-            </Modal>
-        </Transition>
+        <Modal :visible="showModal" @close="showModal=false">
+            <template #title>
+                <div></div>
+            </template>
+            <template #main>
+                <div>content</div>
+            </template>
+            <template #footer>
+                <a-button>确认</a-button>
+                <a-button>取消</a-button>
+            </template>
+        </Modal>
         Mouse position is at: {{ x }}, {{ y }}
         <Test></Test>
         <a-form style="width: 370px;margin: 0 auto;">
@@ -44,7 +42,19 @@
 </template>
 
 <script setup lang="ts">
-import {ref, reactive, computed, watch, watchEffect, onMounted, onBeforeUnmount, provide, defineAsyncComponent, onUnmounted} from 'vue'
+import {
+    ref,
+    reactive,
+    computed,
+    watch,
+    watchEffect,
+    onMounted,
+    onBeforeUnmount,
+    provide,
+    defineAsyncComponent,
+    onUnmounted,
+    unref
+} from 'vue'
 import {ggg} from '../../util/date'
 import HelloWorld from "../../components/HelloWorld.vue";
 import Test from "../../components/Test.vue"
@@ -56,6 +66,13 @@ provide('dd','bbbb')
 
 
 const showModal = ref(false)
+
+watchEffect(() => {
+    // watchEffect() 中调用 unref() 来进行正确的追踪。
+    const watchShowModal = unref(showModal)
+    console.log('watchEffect showModal ', watchShowModal)
+},{flush: 'sync'})
+
 const nowDateTime = moment(new Date()).format('yyyy-MM-dd HH:mm:ss')
 const ff = ref(ggg)
 const obj = reactive({
@@ -111,14 +128,5 @@ watch([obj,obj1], (newValue, oldValue) => {
 .router-link-active.router-link-exact-active {
     color: #42b983;
 }
-/* 下面我们会解释这些 class 是做什么的 */
-.v-enter-active,
-.v-leave-active {
-    transition: opacity 0.3s ease;
-}
 
-.v-enter-from,
-.v-leave-to {
-    opacity: 0;
-}
 </style>
