@@ -12,7 +12,7 @@ export default defineConfig({
         host: '0.0.0.0',
         port: 9999,
         strictPort: true, // true时端口被占用时退出
-        https: true,
+        https: false,
         proxy: {
             '/api': {
                 target: 'http://localhost:8080',

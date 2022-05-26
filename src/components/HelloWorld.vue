@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-defineProps<{ msg: string, count: number }>()
+const props = defineProps<{ msg: string, count: number }>()
 </script>
 
 <template>
-  <h1>{{ msg + ' --- '+ count }}</h1>
+  <h1>{{ props.msg + ' --- '+ props.count }}</h1>
 </template>
 
 <style scoped>

@@ -38,7 +38,7 @@
         <h1 v-clock></h1>
         <h1>{{nowDateTime}}</h1>
         <a-button @click="showModal = !showModal">控制modal</a-button>
-      <svg-icon name="icon-woman" color="red"></svg-icon>
+      <svg-icon name="icon-woman" color="red" style="font-size: 80px"></svg-icon>
       <h1 class="txt-blue">blue</h1>
       <h1 class="txt-green">green</h1>
       <h1 class="txt-red">red</h1>
