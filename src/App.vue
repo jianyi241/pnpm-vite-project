@@ -32,7 +32,7 @@ import { mapGetters } from "vuex";
 
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -40,5 +40,9 @@ import { mapGetters } from "vuex";
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.router-link-active.router-link-exact-active {
+  color: $yellow;
+      //#42b983;
 }
 </style>

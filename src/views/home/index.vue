@@ -38,6 +38,10 @@
         <h1 v-clock></h1>
         <h1>{{nowDateTime}}</h1>
         <a-button @click="showModal = !showModal">控制modal</a-button>
+      <svg-icon name="icon-woman" color="red"></svg-icon>
+      <h1 class="txt-blue">blue</h1>
+      <h1 class="txt-green">green</h1>
+      <h1 class="txt-red">red</h1>
     </div>
 </template>
 
@@ -59,6 +63,8 @@ import {ggg} from '../../util/date'
 import HelloWorld from "../../components/HelloWorld.vue";
 import Test from "../../components/Test.vue"
 import moment from "moment/moment";
+import SvgIcon from "../../components/SvgIcon.vue";
+import Loading from "../../plugins/loading/loading.vue";
 const Modal = defineAsyncComponent(() => import("../../components/Modal.vue"));
 
 provide('message', 'hello inject')
@@ -125,8 +131,14 @@ watch([obj,obj1], (newValue, oldValue) => {
 </script>
 
 <style scoped lang="scss">
-.router-link-active.router-link-exact-active {
-    color: #42b983;
-}
 
+.txt-blue {
+  color: $blue;
+}
+.txt-red {
+  color: $red;
+}
+.txt-green {
+  color: $green;
+}
 </style>
