@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import {createApp, ref} from 'vue'
 import App from './App.vue'
 import store from "./store";
 import router from "./router";
@@ -9,8 +9,8 @@ import {binding} from "./directives";
 
 import 'virtual:svg-icons-register'
 import SvgIcon from './components/SvgIcon.vue'
-
 import loading from "./plugins/loading";
+
 const app = createApp(App)
 binding(app) // 绑定指令
 app.use(store)

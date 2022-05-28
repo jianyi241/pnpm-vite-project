@@ -1,5 +1,6 @@
 <template>
     <div class="page home">
+        <a-button @click="toPage('/about')">去About</a-button>
         <h1>Home{{ ff }}</h1>
         <div class="input-group">
             <label for="varA">varA</label>
@@ -65,11 +66,19 @@ import Test from "../../components/Test.vue"
 import moment from "moment/moment";
 import SvgIcon from "../../components/SvgIcon.vue";
 import Loading from "../../plugins/loading/loading.vue";
+import RouterUtil from "../../router/instance";
+import useCurrentInstance from "../../hook/useCurrentInstance";
+import {useRouter} from "vue-router";
+const {globalProperties, proxy} = useCurrentInstance()
+
 const Modal = defineAsyncComponent(() => import("../../components/Modal.vue"));
 
 provide('message', 'hello inject')
 provide('dd','bbbb')
 
+
+const router = RouterUtil.instance()
+router.updateSpinRefAndRouter(ref(false), useRouter())
 
 const showModal = ref(false)
 
@@ -87,6 +96,11 @@ const obj = reactive({
     varAB: 0
 })
 
+const toPage = (url: string) => {
+    console.log('routerUtil')
+    router.push(url)
+}
+
 const obj1 = reactive({
     numA: 101,
     numB: 102,
@@ -103,7 +117,7 @@ const clickFunc = (e: any) => {
 const x = ref(0)
 const y = ref(0)
 
-function update(event) {
+function update(event: MouseEvent) {
     x.value = event.pageX
     y.value = event.pageY
 }

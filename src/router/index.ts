@@ -13,6 +13,11 @@ const routers:Array<RouteRecordRaw> = [
     component: () => import('@/views/home/index.vue')
   },
   {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/login/login.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import('@/views/about/index.vue')

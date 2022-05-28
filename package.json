@@ -3,15 +3,20 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "serve": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "dev": "vite --mode development",
+    "pro": "vite --mode production",
+    "build": "vue-tsc --noEmit && vite build --mode production",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons-vue": "^6.1.0",
     "ant-design-vue": "^3.2.4",
     "axios": "^0.27.2",
+    "jsencrypt": "^3.2.1",
     "moment": "^2.29.3",
+    "nprogress": "^0.2.0",
     "number-precision": "^1.5.2",
+    "pinia": "2.0.0-rc.10",
     "rxjs": "^7.5.5",
     "vue": "^3.2.25",
     "vue-router": "^4.0.15",
