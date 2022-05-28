@@ -6,7 +6,7 @@ class RSAEncryption {
         'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQChEL++GBMv5/0JBrGW8U9FVmNVMQhxLDoCPntiVcCLi8u0Ut4+mg31cyMtrmWVzQBuuTDFMA+WMw/0H5CZp5cbEUseE5gKvO8lCHxbWwuouRcBrhN/asKPIHLZWP0lW0EMrcMkSTK64QCtV0SrL0v3U9MtUd04D5euw6aoLKS2awIDAQAB'
 
     // 公钥加密
-    encrypt(data: any): string | false{
+    encrypt(data: string): string | false{
         const publicKey = `-----BEGIN PUBLIC KEY-----${this.PUBLIC_KEY}-----END PUBLIC KEY-----`
         const encryptor = new JSEncrypt() // 新建JSEncrypt对象
         encryptor.setPublicKey(publicKey) // 设置公钥
@@ -15,7 +15,7 @@ class RSAEncryption {
     }
 
     // 私钥解密
-    decrypt(data: any, pKey: any): string | false {
+    decrypt(data: string, pKey: string): string | false {
         const privateKey = `-----BEGIN RSA PRIVATE KEY-----${pKey}RZWiISXt8gmeDiF/X0lalHm7ZuDU4sIA/YQ2L+S/wQ==-----END RSA PRIVATE KEY-----`
         const decrypt = new JSEncrypt()
         decrypt.setPrivateKey(privateKey) // 设置私钥
