@@ -24,7 +24,7 @@ const routers:Array<RouteRecordRaw> = [
   }
 ]
 
-const routerHistory: RouterHistory = createWebHistory('/')
+const routerHistory: RouterHistory = createWebHistory(import.meta.env.BASE_URL)
 
 const router: Router = createRouter({
   history: routerHistory,

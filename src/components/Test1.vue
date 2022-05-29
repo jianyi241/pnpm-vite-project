@@ -5,7 +5,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup  lang="ts">
 import Test2 from './Test2.vue'
 </script>
 

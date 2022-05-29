@@ -2,7 +2,7 @@
     <div class="test2">{{msg}}</div>
 </template>
 
-<script setup>
+<script setup  lang="ts">
 import {inject, onMounted, ref} from "vue";
 
 const msg = ref(inject('message'))

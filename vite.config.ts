@@ -5,7 +5,7 @@ import {createSvgIconsPlugin} from "vite-plugin-svg-icons";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: '/',
+    base: '/vite-demo',
     mode: 'development',
     publicDir: 'public',
     server: {
@@ -17,6 +17,7 @@ export default defineConfig({
         proxy: {
             '/api': {
                 target: 'http://localhost:8070',
+                // 'http://8.133.183.72:8070',
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/api/, '')
             }

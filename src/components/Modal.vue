@@ -23,7 +23,7 @@
     </Transition>
 </template>
 
-<script>
+<script lang="ts">
 import {ref, watch, toRefs} from 'vue'
 
 export default {

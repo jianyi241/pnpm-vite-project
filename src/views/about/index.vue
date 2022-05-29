@@ -3,7 +3,7 @@
         <a-button @click="toPage('back')">返回</a-button>
         <h1>About</h1>
         <a-button type="primary" @click="showLoading" :loading="isLoading">显示loading</a-button>
-        <drop-down name="下拉菜单" :menus="menuList" @choose="chooseMenu"></drop-down>
+        <drop-down name="下拉菜单" :menus="menuList" :triangle="true" @choose="chooseMenu"></drop-down>
         <a-button type="primary" @click="getEnvironmentInfo()">获取env信息</a-button>
     </div>
 </template>
