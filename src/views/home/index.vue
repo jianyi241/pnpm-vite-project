@@ -1,22 +1,22 @@
 <template>
     <div class="page home">
-        <a-button @click="toPage('/about')">去About</a-button>
+        <a-button @click="toPage('/about')"> 去About </a-button>
         <h1>Home{{ ff }}</h1>
         <div class="input-group">
             <label for="varA">varA</label>
-            <input type="number" name="varA" v-model="obj.varA"/>
+            <input v-model="obj.varA" type="number" name="varA" />
         </div>
         <div class="input-group">
             <label for="varA">varB</label>
-            <input type="number" name="varA" v-model="obj.varB"/>
+            <input v-model="obj.varB" type="number" name="varA" />
         </div>
         <h1>Calc{{ calcPlus }}</h1>
-        <HelloWorld msg="计算结果" :count="calcPlus"></HelloWorld>
+        <HelloWorld msg="计算结果" :count="calcPlus" />
         <button v-bind="$attrs" @click="clickFunc($event)">点击提示</button>
         <button>attr 点击</button>
-        <Modal :visible="showModal" @close="showModal=false">
+        <Modal :visible="showModal" @close="showModal = false">
             <template #title>
-                <div></div>
+                <div />
             </template>
             <template #main>
                 <div>content</div>
@@ -27,22 +27,22 @@
             </template>
         </Modal>
         Mouse position is at: {{ x }}, {{ y }}
-        <Test></Test>
-        <a-form style="width: 370px;margin: 0 auto;">
+        <Test />
+        <a-form style="width: 370px; margin: 0 auto">
             <a-form-item label="Name" required>
-                <a-input style="width: 340px" v-focus />
+                <a-input v-focus style="width: 340px" />
             </a-form-item>
         </a-form>
         <div v-color="'red'">1111111111</div>
         <div v-color="'green'">2222222222</div>
         <div v-color="'blue'">3333333333</div>
-        <h1 v-clock></h1>
-        <h1>{{nowDateTime}}</h1>
-        <a-button @click="showModal = !showModal">控制modal</a-button>
-      <svg-icon name="icon-woman" color="red" style="font-size: 80px"></svg-icon>
-      <h1 class="txt-blue">blue</h1>
-      <h1 class="txt-green">green</h1>
-      <h1 class="txt-red">red</h1>
+        <h1 v-clock />
+        <h1>{{ nowDateTime }}</h1>
+        <a-button @click="showModal = !showModal"> 控制modal </a-button>
+        <svg-icon name="icon-woman" color="red" style="font-size: 80px" />
+        <h1 class="txt-blue">blue</h1>
+        <h1 class="txt-green">green</h1>
+        <h1 class="txt-red">red</h1>
     </div>
 </template>
 
@@ -60,33 +60,38 @@ import {
     onUnmounted,
     unref
 } from 'vue'
-import {ggg} from '../../util/date'
-import HelloWorld from "../../components/HelloWorld.vue";
-import Test from "../../components/Test.vue"
-import moment from "moment/moment";
-import SvgIcon from "../../components/SvgIcon.vue";
-import Loading from "../../plugins/loading/loading.vue";
-import RouterUtil from "../../router/instance";
-import useCurrentInstance from "../../hook/useCurrentInstance";
-import {useRouter} from "vue-router";
-const {globalProperties, proxy} = useCurrentInstance()
+import moment from 'moment/moment'
+import { useRouter } from 'vue-router'
+import { ggg } from '../../util/date'
+import HelloWorld from '../../components/HelloWorld.vue'
+import Test from '../../components/Test.vue'
+import SvgIcon from '../../components/SvgIcon.vue'
+import Loading from '../../plugins/loading/loading.vue'
+import RouterUtil from '../../router/instance'
+import useCurrentInstance from '../../hook/useCurrentInstance'
 
-const Modal = defineAsyncComponent(() => import("../../components/Modal.vue"));
+const { globalProperties, proxy } = useCurrentInstance()
+
+const Modal = defineAsyncComponent(() => import('../../components/Modal.vue'))
 
 provide('message', 'hello inject')
-provide('dd','bbbb')
-
+provide('dd', 'bbbb')
 
 const router = RouterUtil.instance()
+
 router.updateSpinRefAndRouter(ref(false), useRouter())
 
 const showModal = ref(false)
 
-watchEffect(() => {
-    // watchEffect() 中调用 unref() 来进行正确的追踪。
-    const watchShowModal = unref(showModal)
-    console.log('watchEffect showModal ', watchShowModal)
-},{flush: 'sync'})
+watchEffect(
+    () => {
+        // watchEffect() 中调用 unref() 来进行正确的追踪。
+        const watchShowModal = unref(showModal)
+
+        console.log('watchEffect showModal ', watchShowModal)
+    },
+    { flush: 'sync' }
+)
 
 const nowDateTime = moment(new Date()).format('yyyy-MM-dd HH:mm:ss')
 const ff = ref(ggg)
@@ -107,9 +112,7 @@ const obj1 = reactive({
     numC: 0
 })
 
-const calcPlus = computed(() => {
-    return obj.varA + obj.varB
-})
+const calcPlus = computed(() => obj.varA + obj.varB)
 
 const clickFunc = (e: any) => {
     console.log('eeeee ', e)
@@ -136,23 +139,21 @@ watchEffect(() => {
     console.log('this watchEffect ===> ', [obj, obj1])
 })
 
-watch([obj,obj1], (newValue, oldValue) => {
+watch([obj, obj1], (newValue, oldValue) => {
     obj.varAB = obj.varA + obj.varB
     console.log('watch newValue ', newValue)
     console.log('watch oldValue ', oldValue)
 })
-
 </script>
 
 <style scoped lang="scss">
-
 .txt-blue {
-  color: $blue;
+    color: $blue;
 }
 .txt-red {
-  color: $red;
+    color: $red;
 }
 .txt-green {
-  color: $green;
+    color: $green;
 }
 </style>
