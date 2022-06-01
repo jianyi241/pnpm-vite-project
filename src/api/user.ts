@@ -1,9 +1,15 @@
 import Request from "./request/request";
 import formData from "../util/form-data";
 import AuthorizeInfo from "../model/po/AuthorizeInfo";
+import {CustomResponse} from "./request/interface";
 
-class User extends Request{
-    loginIn({userName, password}: any) {
+class User extends Request {
+    /**
+     *
+     * @param userName
+     * @param password
+     */
+    loginIn({userName, password}: any): Promise<CustomResponse<AuthorizeInfo>> {
         const data = new FormData()
         data.append('userName', userName)
         data.append('password', password)

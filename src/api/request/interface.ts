@@ -27,16 +27,3 @@ export interface CustomResponse<T> {
     data: T;
     origin?: any;
 }
-
-export interface GetDemo {
-    id: number;
-    str: string;
-}
-
-export interface PostDemo {
-    id: number;
-    list: Array<{
-        id: number;
-        version: number;
-    }>;
-}
