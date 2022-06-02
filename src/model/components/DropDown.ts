@@ -1,4 +1,4 @@
-export declare interface MenuItem  {
-    key: any,
-    value: String
+export declare interface MenuItem {
+    key: any
+    value: string
 }

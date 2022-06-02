@@ -1,49 +1,55 @@
 <template>
     <div>
-        <a-button @click="toPage('back')">返回</a-button>
+        <a-button @click="toPage('back')"> 返回 </a-button>
         <h1>About</h1>
-        <a-button type="primary" @click="showLoading" :loading="isLoading"
-            >显示loading</a-button
-        >
+        <a-button type="primary" :loading="isLoading" @click="showLoading">
+            显示loading
+        </a-button>
         <drop-down
             name="下拉菜单"
             :menus="menuList"
             :triangle="true"
             @choose="chooseMenu"
-        ></drop-down>
-        <a-button type="primary" @click="getEnvironmentInfo()"
-            >获取env信息</a-button
-        >
-        <a-button type="primary" @click="showLoading" :loading="isLoading"
-            >显示loading</a-button
-        >
-        <drop-down
-            name="下拉菜单"
-            :menus="menuList"
-            @choose="chooseMenu"
-        ></drop-down>
-        <a-button type="primary" @click="getEnvironmentInfo()"
-            >获取env信息</a-button
-        >
-        <rich-text
-            style="width: 220px"
-            :text="htmlText"
-            :id="74534534"
-        ></rich-text>
+        />
+        <a-button type="primary" @click="getEnvironmentInfo()">
+            获取env信息
+        </a-button>
+        <a-button type="primary" :loading="isLoading" @click="showLoading">
+            显示loading
+        </a-button>
+        <!--        <drop-down-->
+        <!--            name="下拉菜单"-->
+        <!--            :menus="menuList"-->
+        <!--            @choose="chooseMenu"-->
+        <!--        ></drop-down>-->
+        <a-button type="primary" @click="getEnvironmentInfo()">
+            获取env信息
+        </a-button>
+        <!--        <rich-text-->
+        <!--            style="width: 220px"-->
+        <!--            :text="htmlText"-->
+        <!--            :id="74534534"-->
+        <!--        ></rich-text>-->
+        <div class="box-wrapper">
+            <div class="box1" />
+            <div class="box2" />
+            <div class="box3" />
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import DropDown from '../../components/DropDown.vue'
 import { MenuItem } from '../../model/components/DropDown'
 import useCurrentInstance from '../../hook/useCurrentInstance'
 import RouterUtil from '../../router/instance'
-import { useRouter } from 'vue-router'
-import RichText from '../../components/RichText.vue'
+// import RichText from '../../components/RichText.vue'
 
 const { globalProperties, proxy } = useCurrentInstance()
 const router = RouterUtil.instance()
+
 router.updateSpinRefAndRouter(ref(false), useRouter())
 const menuList = ref<Array<MenuItem>>([
     {
@@ -74,8 +80,8 @@ const getEnvironmentInfo = () => {
     console.log('environment ', import.meta.env)
 }
 
-const chooseMenu = (e: MenuItem) => {
-    console.log('value ', e.value)
+const chooseMenu = (item: MenuItem): void => {
+    console.log('value ', item.value)
 }
 
 const toPage = (url: string) => {
@@ -97,4 +103,24 @@ const showLoading = () => {
 }
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.box-wrapper {
+    width: 1000px;
+    display: flex;
+    height: 500px;
+    border: 2px solid #000000;
+    border-radius: 4px;
+    > .box1 {
+        flex: 1;
+        background-color: red;
+    }
+    > .box2 {
+        flex: 1;
+        background-color: green;
+    }
+    > .box3 {
+        flex: 1;
+        background-color: blue;
+    }
+}
+</style>

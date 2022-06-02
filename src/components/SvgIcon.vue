@@ -1,11 +1,15 @@
 <template>
-    <svg aria-hidden="true" class="svg-icon" :style="{fontSize: size + 'px'}">
-        <use :xlink:href="symbolId" rel="external nofollow"  :fill="props.color" />
+    <svg aria-hidden="true" class="svg-icon" :style="{ fontSize: size + 'px' }">
+        <use
+            :xlink:href="symbolId"
+            rel="external nofollow"
+            :fill="props.color"
+        />
     </svg>
 </template>
 
 <script setup lang="ts">
-import {computed, SetupContext, toRefs} from "vue";
+import { computed, SetupContext, toRefs } from 'vue'
 
 const props = defineProps({
     prefix: {
@@ -27,7 +31,6 @@ const props = defineProps({
 })
 
 const symbolId = computed(() => `#${props.prefix}-${props.name}`)
-
 </script>
 
 <style scoped>

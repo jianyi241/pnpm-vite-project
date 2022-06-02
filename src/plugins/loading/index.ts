@@ -1,5 +1,5 @@
+import { createApp } from 'vue'
 import Loading from './loading.vue'
-import {createApp} from "vue";
 
 const loadingPlugin = {
     install(app: any) {

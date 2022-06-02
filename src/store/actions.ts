@@ -1,4 +1,4 @@
-import {ActionContext} from "vuex";
+import { ActionContext } from 'vuex'
 
 const actions: any = {
     changeGlobalNum(context: ActionContext<string, any>, val: any) {

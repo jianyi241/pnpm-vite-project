@@ -1,6 +1,7 @@
-import UserInfo from "./UserInfo";
+import UserInfo from './UserInfo'
 
-export default class AuthorizeInfo{
+export default class AuthorizeInfo {
     userInfo?: UserInfo
+
     token?: string
 }

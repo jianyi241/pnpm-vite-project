@@ -1,5 +1,5 @@
-import {DirectiveBinding} from "vue";
-import moment from "moment/moment";
+import { DirectiveBinding } from 'vue'
+import moment from 'moment/moment'
 
 const clock = {
     mounted: (el: HTMLElement, bind: DirectiveBinding) => {
@@ -10,7 +10,7 @@ const clock = {
     }
 }
 
-export function bindingClock(app: any){
+export function bindingClock(app: any) {
     console.log('app ', app)
     app.directive('clock', clock)
 }

@@ -5,10 +5,8 @@
     </div>
 </template>
 
-<script setup  lang="ts">
-import Test1 from "./Test1.vue";
+<script setup lang="ts">
+import Test1 from './Test1.vue'
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

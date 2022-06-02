@@ -1,13 +1,15 @@
-import {ActionContext} from "vuex";
-import AuthorizeInfo from "../../model/po/AuthorizeInfo";
+import { ActionContext } from 'vuex'
+import AuthorizeInfo from '../../model/po/AuthorizeInfo'
 
 const user = {
     state: {
-        userInfo: sessionStorage.getItem('userInfo') ? JSON.stringify(sessionStorage.getItem('userInfo')) : '',
+        userInfo: sessionStorage.getItem('userInfo') ?
+            JSON.stringify(sessionStorage.getItem('userInfo')) :
+            '',
         token: sessionStorage.getItem('token')
     },
     getters: {
-        getUserInfo(state: any){
+        getUserInfo(state: any) {
             return state.userInfo
         }
     },
@@ -15,7 +17,7 @@ const user = {
         SET_USER_INFO(state: any, data: AuthorizeInfo) {
             const { token, userInfo } = data
             sessionStorage.setItem('userInfo', JSON.stringify(userInfo))
-            if (typeof token === "string") {
+            if (typeof token === 'string') {
                 sessionStorage.setItem('token', token)
             }
             state.userInfo = userInfo
@@ -25,7 +27,7 @@ const user = {
             sessionStorage.clear()
             state.userInfo = ''
             state.token = ''
-        },
+        }
     },
     actions: {
         setUserInfo(context: ActionContext<string, any>, data: any) {

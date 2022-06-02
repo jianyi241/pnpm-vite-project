@@ -1,7 +1,7 @@
 <template>
     <Transition>
-        <div class="modal" v-show="visible">
-            <div class="modal-mask" v-if="mask"></div>
+        <div v-show="visible" class="modal">
+            <div v-if="mask" class="modal-mask"></div>
             <div class="modal-box">
                 <a-button size="small" @click="close()">关闭</a-button>
                 <div class="modal-title">
@@ -24,10 +24,10 @@
 </template>
 
 <script lang="ts">
-import {ref, watch, toRefs} from 'vue'
+import { ref, watch, toRefs } from 'vue'
 
 export default {
-    name: "Modal",
+    name: 'Modal',
     props: {
         visible: {
             default: false
@@ -39,7 +39,7 @@ export default {
             default: '提示'
         }
     },
-    setup(props,context) {
+    setup(props, context) {
         const close = () => {
             context.emit('close', false)
         }
@@ -76,8 +76,16 @@ export default {
         width: 100%;
         height: 100%;
         //background-color: rgba(0,0,0,.6);
-        background: -webkit-repeating-radial-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, 1));
-        background: -moz-repeating-radial-gradient(rgba(0, 0, 0, .9), rgba(0, 0, 0, .9), rgba(0, 0, 0, .9), rgba(0, 0, 0, .8));
+        background: -webkit-repeating-radial-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 1)
+        );
+        background: -moz-repeating-radial-gradient(
+            rgba(0, 0, 0, 0.9),
+            rgba(0, 0, 0, 0.9),
+            rgba(0, 0, 0, 0.9),
+            rgba(0, 0, 0, 0.8)
+        );
         z-index: 998;
     }
 
@@ -91,7 +99,9 @@ export default {
         background-color: #ffffff;
         z-index: 999;
 
-        > .modal-title, > .modal-main, > .modal-footer {
+        > .modal-title,
+        > .modal-main,
+        > .modal-footer {
             padding: 8px 16px;
         }
     }

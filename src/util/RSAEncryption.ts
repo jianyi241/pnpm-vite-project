@@ -2,11 +2,11 @@ import { JSEncrypt } from 'jsencrypt'
 
 class RSAEncryption {
     // 公钥串
-    PUBLIC_KEY: string =
+    PUBLIC_KEY =
         'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQChEL++GBMv5/0JBrGW8U9FVmNVMQhxLDoCPntiVcCLi8u0Ut4+mg31cyMtrmWVzQBuuTDFMA+WMw/0H5CZp5cbEUseE5gKvO8lCHxbWwuouRcBrhN/asKPIHLZWP0lW0EMrcMkSTK64QCtV0SrL0v3U9MtUd04D5euw6aoLKS2awIDAQAB'
 
     // 公钥加密
-    encrypt(data: string): string | false{
+    encrypt(data: string): string | false {
         const publicKey = `-----BEGIN PUBLIC KEY-----${this.PUBLIC_KEY}-----END PUBLIC KEY-----`
         const encryptor = new JSEncrypt() // 新建JSEncrypt对象
         encryptor.setPublicKey(publicKey) // 设置公钥
@@ -24,9 +24,11 @@ class RSAEncryption {
 }
 
 // 单列模式返回对象
-let rsaEncryption;
+let rsaEncryption
 export default (() => {
-    if (rsaEncryption) return rsaEncryption;
-    rsaEncryption = new RSAEncryption();
-    return rsaEncryption;
-})();
+    if (rsaEncryption) {
+        return rsaEncryption
+    }
+    rsaEncryption = new RSAEncryption()
+    return rsaEncryption
+})()

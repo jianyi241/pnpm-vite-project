@@ -1,4 +1,4 @@
-import {} from "vuex";
+import {} from 'vuex'
 
 const getters: any = {
     getGlobalNum(state: any): any {

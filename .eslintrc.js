@@ -11,7 +11,9 @@ module.exports = {
         'airbnb-base',
         'plugin:vue/vue3-essential',
         'plugin:vue/vue3-recommended',
-        'plugin:@typescript-eslint/recommended'
+        'plugin:@typescript-eslint/recommended',
+        'prettier',
+        'plugin:prettier/recommended', // 使用prettier中的样式规范，且如果使得ESLint会检测prettier的格式问题，同样将格式问题以error的形式抛出
     ],
     //这句不能少
     "parser": "vue-eslint-parser",
@@ -24,9 +26,22 @@ module.exports = {
         'vue',
         '@typescript-eslint'
     ],
+    'settings': {
+        "import/extensions": [".js", ".mjs", ".jsx", ".ts", ".tsx"]
+    },
     'rules': {
+        "import/extensions": [
+            "warn",
+            "ignorePackages",
+            {
+                "js": "never",
+                "mjs": "never",
+                "jsx": "never",
+                "ts": "never",
+                "tsx": "never"
+            }
+        ],
         'vue/comment-directive': 0,  //这句不能少不然报错
-
         'array-bracket-spacing': ['error', 'never'], // 是否允许非空数组里面有多余的空格
         'arrow-parens': 'off', // 箭头函数用小括号括起来
         'block-spacing': ['error', 'always'], // =>的前/后括号
@@ -65,7 +80,7 @@ module.exports = {
         'max-statements': ['off', 10], // 函数内最多有几个声明
         'new-cap': 'error', // 函数名首行大写必须使用new方式调用，首行小写必须用不带new方式调用
         'new-parens': 'error', // new时必须加小括号
-        'newline-after-var': 'error', // 变量声明后是否需要空一行
+        // 'newline-after-var': 'error', // 变量声明后是否需要空一行
         'no-alert': 'off', // 禁止使用alert confirm prompt
         'no-array-constructor': 'error', // 禁止使用数组构造器
         'no-bitwise': 'off', // 禁止使用按位运算符
@@ -151,19 +166,20 @@ module.exports = {
         'no-throw-literal': 'error', // 禁止抛出字面量错误 throw 'error';
         'no-undef': 'warn', // 不能有未定义的变量
         'no-undef-init': 'error', // 变量初始化时不能直接给它赋值为undefined
-        'no-undefined': 'error', // 不能使用undefined
+        'no-undefined': 'warn', // 不能使用undefined
         'no-unexpected-multiline': 'error', // 避免多行表达式
         'no-underscore-dangle': 'warn', // 标识符不能以_开头或结尾
         'no-unneeded-ternary': 'error', // 禁止不必要的嵌套 var isYes = answer === 'warn' ? true : false;
         'no-unreachable': 'error', // 不能有无法执行的代码
         'no-unused-expressions': 'error', // 禁止无用的表达式
-        'no-unused-vars': ['error', {'vars': 'all', 'args': 'after-used'}], // 不能有声明后未被使用的变量或参数
-        'no-use-before-define': 'error', // 未定义前不能使用
+        'no-unused-vars': ['warn', {'vars': 'all', 'args': 'after-used'}], // 不能有声明后未被使用的变量或参数
+        'no-use-before-define': 'warn', // 未定义前不能使用
         'no-useless-call': 'error', // 禁止不必要的call和apply
         'no-void': 'error', // 禁用void操作符
         'no-var': 'off', // 禁用var，用let和const代替
         'no-warning-comments': ['warn', { 'terms': ['todo', 'fixme', 'xxx'], 'location': 'start' }], // 不能有警告备注
         'no-with': 'error', // 禁用with
+        'no-duplicate-imports': ['warn', {'includeExports': true}], // 禁止重复导入
         'object-curly-spacing': ['off', 'never'], // 大括号内是否允许不必要的空格
         'object-shorthand': 'off', // 强制对象字面量缩写语法
         'one-var': 'warn', // 连续声明
@@ -174,11 +190,11 @@ module.exports = {
         'prefer-spread': 'off', // 首选展开运算
         'prefer-reflect': 'off', // 首选Reflect的方法
         'quotes': ['warn', 'single'], // 引号类型 `` '' ''
-        'quote-props':['error', 'always'], // 对象字面量中的属性名是否强制双引号
+        'quote-props':['warn', 'as-needed'], // 对象字面量中的属性名是否强制双引号,仅在需要时添加引号
         'radix': 'error', // parseInt必须指定第二个参数
         'id-match': 'off', // 命名检测
         'require-yield': 'off', // 生成器函数必须有yield
-        'semi': ['error', 'always'], // 语句强制分号结尾
+        // 'semi': ['error', 'always'], // 语句强制分号结尾
         'semi-spacing': ['off', {'before': false, 'after': true}], // 分号前后空格
         'sort-vars': 'off', // 变量声明时排序
         'space-after-keywords': ['off', 'always'], // 关键字后面是否要空一格

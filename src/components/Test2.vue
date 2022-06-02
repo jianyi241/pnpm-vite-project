@@ -1,9 +1,9 @@
 <template>
-    <div class="test2">{{msg}}</div>
+    <div class="test2">{{ msg }}</div>
 </template>
 
-<script setup  lang="ts">
-import {inject, onMounted, ref} from "vue";
+<script setup lang="ts">
+import { inject, onMounted, ref } from 'vue'
 
 const msg = ref(inject('message'))
 onMounted(() => {
@@ -11,6 +11,4 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

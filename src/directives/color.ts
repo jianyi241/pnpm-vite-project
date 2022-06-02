@@ -1,4 +1,4 @@
-import {DirectiveBinding} from "vue";
+import { DirectiveBinding } from 'vue'
 
 const color = {
     mounted: (el: HTMLElement, bind: DirectiveBinding) => {
@@ -6,7 +6,7 @@ const color = {
     }
 }
 
-export function bindingColor(app: any){
+export function bindingColor(app: any) {
     console.log('app ', app)
     app.directive('color', color)
 }

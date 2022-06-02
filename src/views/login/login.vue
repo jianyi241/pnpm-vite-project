@@ -17,7 +17,7 @@
                     </a-input>
                 </a-form-item>
                 <a-form-item name="password">
-                    <a-input type="password" v-model:value="formState.password">
+                    <a-input v-model:value="formState.password" type="password">
                         <template #prefix>
                             <LockOutlined style="color: rgba(0, 0, 0, 0.25)" />
                         </template>
@@ -34,8 +34,8 @@
                     <a-button
                         block
                         :loading="loading"
-                        @click="resetFields"
                         style="margin-top: 10px"
+                        @click="resetFields"
                         >取消
                     </a-button>
                 </a-form-item>
@@ -50,9 +50,9 @@ import { ref, reactive, onMounted } from 'vue'
 import { useForm } from 'ant-design-vue/es/form'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
+import { message } from 'ant-design-vue'
 import user from '../../api/user'
 import rsaEncryption from '../../util/RSAEncryption'
-import { message } from 'ant-design-vue'
 import RouterUtil from '../../router/instance'
 
 const router = RouterUtil.instance()

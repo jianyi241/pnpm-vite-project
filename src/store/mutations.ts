@@ -1,4 +1,3 @@
-
 const mutations = {
     CHANGE_GLOBAL_NUM(state: any, val: any) {
         const { calcType } = val

@@ -1,7 +1,9 @@
 <template>
-    <div class="page home">
+    <div class="home-page">
         <a-button @click="toPage('/about')"> 去About </a-button>
-        <h1>Home{{ ff }}</h1>
+        <template>
+            <h1>Home</h1>
+        </template>
         <div class="input-group">
             <label for="varA">varA</label>
             <input v-model="obj.varA" type="number" name="varA" />
@@ -43,6 +45,16 @@
         <h1 class="txt-blue">blue</h1>
         <h1 class="txt-green">green</h1>
         <h1 class="txt-red">red</h1>
+        <h1>Best Page</h1>
+        <h1>Best Page</h1>
+        <h1>Best Page</h1>
+        <h1>Best Page</h1>
+        <h1>Best Page</h1>
+        <h1>Best Page</h1>
+        <h1>Best Page</h1>
+        <h1>Best Page</h1>
+        <h1>Best Page</h1>
+        <h1>Best Page</h1>
     </div>
 </template>
 
@@ -62,11 +74,9 @@ import {
 } from 'vue'
 import moment from 'moment/moment'
 import { useRouter } from 'vue-router'
-import { ggg } from '../../util/date'
 import HelloWorld from '../../components/HelloWorld.vue'
 import Test from '../../components/Test.vue'
 import SvgIcon from '../../components/SvgIcon.vue'
-import Loading from '../../plugins/loading/loading.vue'
 import RouterUtil from '../../router/instance'
 import useCurrentInstance from '../../hook/useCurrentInstance'
 
@@ -94,7 +104,6 @@ watchEffect(
 )
 
 const nowDateTime = moment(new Date()).format('yyyy-MM-dd HH:mm:ss')
-const ff = ref(ggg)
 const obj = reactive({
     varA: 2,
     varB: 4,

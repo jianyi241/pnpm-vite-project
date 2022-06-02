@@ -1,4 +1,4 @@
-const state:any = {
+const state: any = {
     globalNum: 1
 }
 
