@@ -30,17 +30,11 @@ module.exports = {
         "import/extensions": [".js", ".mjs", ".jsx", ".ts", ".tsx"]
     },
     'rules': {
-        "import/extensions": [
-            "warn",
-            "ignorePackages",
-            {
-                "js": "never",
-                "mjs": "never",
-                "jsx": "never",
-                "ts": "never",
-                "tsx": "never"
-            }
-        ],
+        'import/no-unresolved': 'off',
+        'import/extensions': 'off',
+        'import/no-absolute-path': 'off',
+        'import/no-extraneous-dependencies': 'off',
+        'vue/multi-word-component-names': 0,
         'vue/comment-directive': 0,  //这句不能少不然报错
         'array-bracket-spacing': ['error', 'never'], // 是否允许非空数组里面有多余的空格
         'arrow-parens': 'off', // 箭头函数用小括号括起来
