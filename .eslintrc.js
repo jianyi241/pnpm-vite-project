@@ -136,7 +136,7 @@ module.exports = {
         'no-obj-calls': 'error', // 不能调用内置的全局对象，比如Math() JSON()
         'no-octal': 'error', // 禁止使用八进制数字
         'no-octal-escape': 'error', // 禁止使用八进制转义序列
-        'no-param-reassign': 'error', // 禁止给参数重新赋值
+        'no-param-reassign': 'off', // 禁止给参数重新赋值
         'no-path-concat': 'off', // node中不能使用__dirname或__filename做路径拼接
         'no-plusplus': 'off', // 禁止使用++，--
         'no-process-env': 'off', // 禁止使用process.env

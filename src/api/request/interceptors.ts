@@ -5,6 +5,7 @@ import axios, {
     Method
 } from 'axios'
 import { message } from 'ant-design-vue'
+import { string } from 'fast-glob/out/utils'
 import router from '../../router'
 import store from '../../store'
 // axios.defaults.withCredentials = true
@@ -14,9 +15,10 @@ import store from '../../store'
 // 定义接口
 interface PendingType {
     url?: string
-    method?: Method
+    method?: Method | string
     params: any
     data: any
+    // eslint-disable-next-line @typescript-eslint/ban-types
     cancel: Function
 }
 
@@ -25,6 +27,7 @@ const pending: Array<PendingType> = []
 const { CancelToken } = axios
 // 移除重复请求
 const removePending = (config: AxiosRequestConfig) => {
+    // eslint-disable-next-line no-restricted-syntax
     for (const key in pending) {
         const item = Number(key)
         const list: PendingType = pending[key]
@@ -42,7 +45,6 @@ const removePending = (config: AxiosRequestConfig) => {
         }
     }
 }
-// @ts-ignore
 const instance: AxiosInstance = axios.create({
     timeout: 20000,
     withCredentials: true
@@ -53,11 +55,12 @@ instance.interceptors.request.use(
     (conf) => {
         console.log('URL ---> ', conf.url, '--->', conf)
         const token = sessionStorage.getItem('token') || ''
-        // @ts-ignore
-        conf.headers.auth = token
+        // conf.headers?.auth = token
+        Object.assign(conf.headers, {
+            auth: token
+        })
         removePending(conf)
         conf.cancelToken = new CancelToken((c) => {
-            // @ts-ignore
             pending.push({
                 url: conf.url,
                 method: conf.method,

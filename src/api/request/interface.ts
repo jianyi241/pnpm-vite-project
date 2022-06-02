@@ -30,6 +30,6 @@ export interface AxiosResponse {
 export interface CustomResponse<T> {
     readonly status: boolean
     readonly message: string
-    data: T
+    data: T | undefined
     origin?: any
 }

@@ -1,10 +1,10 @@
 import { message } from 'ant-design-vue'
-import {AxiosResponse} from "axios";
-import {getUrl} from "./url-dict";
-import instance from "./interceptors";
-import {AxiosRequest, CustomResponse} from "./interface";
-import HttpResult from '../../model/HttpResult';
-import AuthorizeInfo from '../../model/po/AuthorizeInfo';
+import { AxiosResponse } from 'axios'
+import { getUrl } from './url-dict'
+import instance from './interceptors'
+import { AxiosRequest, CustomResponse } from './interface'
+import HttpResult from '../../model/HttpResult'
+import AuthorizeInfo from '../../model/po/AuthorizeInfo'
 
 class Request {
     // baseURL
@@ -24,9 +24,8 @@ class Request {
         params,
         responseType
     }: AxiosRequest): Promise<CustomResponse<T>> {
-
         // url解析
-        const _url = url as string.split('.')
+        const _url = url.split('.')
         url = getUrl(_url[0], _url[1])
 
         return new Promise((resolve, reject) => {
@@ -51,29 +50,28 @@ class Request {
                                 origin: res.data
                             })
                         } else {
-                            message.error(res.data?.message || url + ' failed')
+                            message.error(res.data?.message || `${url} failed`)
                             resolve({
                                 status: false,
-                                message: res.data?.message || url + ' failed',
+                                message: res.data?.message || `${url} failed`,
                                 data: res.data?.data,
                                 origin: res.data
                             })
                         }
                     } else {
-                        // @ts-ignore
                         resolve({
                             status: false,
-                            message: res.data?.message || url + ' failed',
-                            data: null
+                            message: res.data?.message || `${url} failed`,
+                            data: undefined
                         })
                     }
                 })
                 .catch((err) => {
-                    const message =
-                        err?.data?.message || err?.message || url + ' failed'
-                    message.error(message)
+                    const messageText =
+                        err?.data?.message || err?.message || `${url} failed`
+                    message.error(messageText)
                     // eslint-disable-next-line
-                reject({status: false, message, data: null});
+                reject({status: false, message: messageText, data: null});
                 })
         })
     }

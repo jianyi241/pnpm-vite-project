@@ -7,12 +7,11 @@ const TIME_STAMP = new Date().getTime()
 // https://cn.vitejs.dev/config/
 export default ({ mode }) => {
     const ENV = loadEnv(mode, process.cwd())
-    console.log('mode ', mode)
     return defineConfig({
         define: {
             'process.env': ENV
         },
-        base: ENV.BASE_URL, // 开发或生产环境服务的公共基础路径
+        base: '/vite-demo', // 开发或生产环境服务的公共基础路径
         // mode: 'development',
         publicDir: 'public',
         server: {
@@ -42,15 +41,15 @@ export default ({ mode }) => {
             // manifest: true, // 当设置为 true，构建后将会生成 manifest.json 文件，包含了没有被 hash 过的资源文件名和 hash 后版本的映射。可以为一些服务器框架渲染时提供正确的资源引入链接。当该值为一个字符串时，它将作为 manifest 文件的名字。
             ssrManifest: true, // 当设置为 true 时，构建也将生成 SSR 的 manifest 文件，以确定生产中的样式链接与资产预加载指令。当该值为一个字符串时，它将作为 manifest 文件的名字。
             cssCodeSplit: true, // 弃用/禁用 css代码拆分。如果设置为false，整个项目中的所有 CSS 将被提取到一个 CSS 文件中
-            cssTarget: 'modules', // 此选项允许用户为 CSS 的压缩设置一个不同的浏览器 target，此处的 target 并非是用于 JavaScript 转写目标。
+            // cssTarget: 'modules', // 此选项允许用户为 CSS 的压缩设置一个不同的浏览器 target，此处的 target 并非是用于 JavaScript 转写目标。
             sourcemap: false, // 构建后是否生成 source map 文件。如果为 true，将会创建一个独立的 source map 文件。如果为 'inline'，source map 将作为一个 data URI 附加在输出文件中。'hidden' 的工作原理与 'true' 相似，只是 bundle 文件中相应的注释将不被保留。
             rollupOptions: {
                 output: {
-                    manualChunks: {
-                        // 拆分代码，这个就是分包，配置完后自动按需加载，现在还比不上webpack的splitchunk，不过也能用了。
-                        vue: ['vue', 'vue-router', 'vuex'],
-                        vant: ['vant']
-                    },
+                    // manualChunks: {
+                    //     // 拆分代码，这个就是分包，配置完后自动按需加载，现在还比不上webpack的splitchunk，不过也能用了。
+                    //     vue: ['vue', 'vue-router', 'vuex'],
+                    //     vant: ['vant']
+                    // },
                     entryFileNames: `assets/[name]-${TIME_STAMP}.js`,
                     chunkFileNames: `assets/[name]-${TIME_STAMP}.js`,
                     assetFileNames: `assets/[name]-${TIME_STAMP}.[ext]`

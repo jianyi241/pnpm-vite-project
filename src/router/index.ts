@@ -10,7 +10,7 @@ const routers: Array<RouteRecordRaw> = [
     {
         path: '/',
         name: 'Home',
-        component: () => import('@/views/home/index.vue')
+        component: () => import('@/views/home/home.vue')
     },
     {
         path: '/login',
@@ -20,7 +20,7 @@ const routers: Array<RouteRecordRaw> = [
     {
         path: '/about',
         name: 'About',
-        component: () => import('@/views/about/index.vue')
+        component: () => import('@/views/about/about.vue')
     }
 ]
 

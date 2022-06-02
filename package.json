@@ -6,6 +6,7 @@
     "serve": "vite --mode development",
     "pro": "vite --mode production",
     "build": "vue-tsc --noEmit && vite build --mode production",
+    "build-dev": "vue-tsc --noEmit && vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix"
   },

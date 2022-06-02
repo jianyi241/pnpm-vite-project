@@ -1,8 +1,6 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-    readonly MODE: string
-    readonly BASE_URL: string
     readonly VITE_APP_BASE_API: string
     readonly VITE_APP_SERVER: string
     readonly VITE_APP_WS_SERVER: string
