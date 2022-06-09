@@ -21,6 +21,11 @@ const routers: Array<RouteRecordRaw> = [
         path: '/about',
         name: 'About',
         component: () => import('@/views/about/about.vue')
+    },
+    {
+        path: '/display/grid',
+        name: 'Grid',
+        component: () => import('@/views/display/grid/grid.vue')
     }
 ]
 
