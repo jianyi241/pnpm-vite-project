@@ -168,8 +168,11 @@ watch([obj, obj1], (newValue, oldValue) => {
 
 <style scoped lang="scss">
 .home-page {
+    position: fixed;
     height: 100vh;
     width: 100vw;
+    left: 0;
+    top: 0;
     background: url('../../assets/image/home_bg.jpg') center center/cover fixed
         no-repeat;
     overflow: auto;
