@@ -36,8 +36,8 @@ export default {
         //grid-template:
         //    minmax(150px, max-content)
         //    repeat(auto-fill, 150px) / minmax(200px, max-content) repeat(auto-fill, 200px);
-        grid-template-columns: [c1] 200px [c2] 200px [c3] 200px;
-        grid-template-rows: [r1] 150px [r2] 150px;
+        grid-template-columns: 200px 200px 200px;
+        grid-template-rows: 150px 150px;
         gap: 15px 15px;
         //row-gap: 15px;
         //column-gap: 15px;
