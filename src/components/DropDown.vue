@@ -26,6 +26,7 @@ import {
 } from 'vue'
 import { MenuItem } from '../model/components/DropDown'
 
+// eslint-disable-next-line vue/no-setup-props-destructure
 const {
     name,
     menus,

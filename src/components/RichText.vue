@@ -57,7 +57,7 @@ watch(
 
 onMounted(() => {
     const node: HTMLElement | null = document.getElementById(
-        'moreBtn' + props.id
+        `moreBtn${props.id}`
     )
     if (node) {
         node.addEventListener('click', (e) => {

@@ -134,7 +134,7 @@ onMounted(() => {})
     width: 100vw;
     height: 100vh;
     //background-color: cornflowerblue;
-    background: url('../../assets/image/login_bg.jpg') center center/cover
+    background: url('../../assets/image/home_bg.jpg') center center/cover
         no-repeat;
 
     > .login-form-wrap {

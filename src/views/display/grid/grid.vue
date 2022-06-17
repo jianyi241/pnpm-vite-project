@@ -1,28 +1,53 @@
 <template>
     <div class="grid">
         <h1>Grid</h1>
-        <div class="grid-box parent-box">
-            <div style="background-color: red" class="box child-box-1">11</div>
-            <div style="background-color: green" class="box child-box-2">
-                22
-            </div>
-            <div style="background-color: blue" class="box child-box-3">33</div>
-            <div style="background-color: orange" class="box child-box-4">
-                44
-            </div>
-            <div style="background-color: #000000" class="box child-box-5">
-                55
-            </div>
-            <div style="background-color: yellow" class="box child-box-6">
-                66
-            </div>
-        </div>
+        <!--        <div class="grid-box parent-box">-->
+        <!--            <div style="background-color: red" class="box child-box-1">11</div>-->
+        <!--            <div style="background-color: green" class="box child-box-2">-->
+        <!--                22-->
+        <!--            </div>-->
+        <!--            <div style="background-color: blue" class="box child-box-3">33</div>-->
+        <!--            <div style="background-color: orange" class="box child-box-4">-->
+        <!--                44-->
+        <!--            </div>-->
+        <!--            <div style="background-color: #000000" class="box child-box-5">-->
+        <!--                55-->
+        <!--            </div>-->
+        <!--            <div style="background-color: yellow" class="box child-box-6">-->
+        <!--                66-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        <div class="editor-wrapper">-->
+        <!--            <div id="editor" class="editor"></div>-->
+        <!--        </div>-->
+        <!--        <WangEditor @change="handleChangeEditor"></WangEditor>-->
+        <c-form-item label="住址">
+            <c-input
+                v-model:value="address"
+                input-type="text"
+                placeholder="请输入"
+            ></c-input>
+        </c-form-item>
     </div>
 </template>
 
-<script>
-export default {
-    name: 'Grid'
+<script lang="ts" setup>
+import { onMounted, ref, watch } from 'vue'
+import WangEditor from '../../../components/WangEditor.vue'
+import CFormItem from '../../../components/form/CFormItem.vue'
+import CInput from '../../../components/form/CInput.vue'
+
+onMounted(() => {
+    console.log('grid onMounted...')
+})
+
+const address = ref()
+watch(address, (n, o) => {
+    console.log('address change ', n)
+})
+
+const handleChangeEditor = (e: string) => {
+    console.log(e, 'html')
 }
 </script>
 
@@ -53,6 +78,9 @@ export default {
             //margin-right: 15px;
             //margin-bottom: 15px;
         }
+    }
+    .editor {
+        height: 500px;
     }
 }
 </style>
