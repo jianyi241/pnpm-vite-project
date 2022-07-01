@@ -30,10 +30,33 @@
         <!--            :text="htmlText"-->
         <!--            :id="74534534"-->
         <!--        ></rich-text>-->
-        <div class="box-wrapper">
+        <div v-if="0" class="box-wrapper">
             <div class="box1" />
             <div class="box2" />
             <div class="box3" />
+        </div>
+        <div class="text-mode">
+            <div class="text" style="writing-mode: vertical-lr">
+                Writing mode.
+            </div>
+            <div class="text" style="writing-mode: vertical-rl">
+                Writing mode.
+            </div>
+            <div class="text" style="writing-mode: horizontal-tb">
+                Writing mode.
+            </div>
+            <div class="text" style="writing-mode: sideways-lr">
+                Writing mode.
+            </div>
+            <div class="text" style="writing-mode: sideways-rl">
+                Writing mode.
+            </div>
+        </div>
+        <button @click="changeDialog()">trigger</button>
+        <div v-if="visible" class="dialog-wrapper">
+            <Transition>
+                <dialog :open="visible">原生dialog</dialog>
+            </Transition>
         </div>
     </div>
 </template>
@@ -45,6 +68,7 @@ import DropDown from '../../components/DropDown.vue'
 import { MenuItem } from '../../model/components/DropDown'
 import useCurrentInstance from '../../hook/useCurrentInstance'
 import RouterUtil from '../../router/instance'
+import Modal from '../../components/Modal.vue'
 // import RichText from '../../components/RichText.vue'
 
 const { globalProperties, proxy } = useCurrentInstance()
@@ -69,6 +93,12 @@ const menuList = ref<Array<MenuItem>>([
         value: '菜单4'
     }
 ])
+
+const visible = ref(false)
+
+const changeDialog = () => {
+    visible.value = !visible.value
+}
 
 const htmlText = ref(`
     <p>丙辰中秋，欢饮达旦，大醉，作此篇，兼怀子由。</p>
@@ -108,7 +138,6 @@ const showLoading = () => {
     width: 1000px;
     display: flex;
     height: 500px;
-    border: 2px solid #000000;
     border-radius: 4px;
     > .box1 {
         flex: 1;
@@ -121,6 +150,15 @@ const showLoading = () => {
     > .box3 {
         flex: 1;
         background-color: blue;
+    }
+    .v-enter-active,
+    .v-leave-active {
+        transition: opacity 0.3s ease;
+    }
+
+    .v-enter-from,
+    .v-leave-to {
+        opacity: 0;
     }
 }
 </style>

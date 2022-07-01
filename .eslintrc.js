@@ -30,6 +30,7 @@ module.exports = {
         "import/extensions": [".js", ".mjs", ".jsx", ".ts", ".tsx"]
     },
     'rules': {
+        'import/prefer-default-export': 'off',
         'import/no-unresolved': 'off',
         'import/extensions': 'off',
         'import/no-absolute-path': 'off',
