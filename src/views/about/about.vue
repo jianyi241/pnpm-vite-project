@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <a-button @click="toPage('back')"> 返回 </a-button>
+    <div style="padding: 100px">
+        <a-button @click="toPage('back')"> 返回</a-button>
         <h1>About</h1>
         <a-button type="primary" :loading="isLoading" @click="showLoading">
             显示loading
@@ -57,6 +57,44 @@
             <Transition>
                 <dialog :open="visible">原生dialog</dialog>
             </Transition>
+        </div>
+        <div class="custom-table table-budget">
+            <div class="thead">
+                <div class="tr">
+                    <div class="th">Project</div>
+                    <div class="th">Budget</div>
+                    <div class="th">Used to Date</div>
+                    <div class="th">Balance (h)</div>
+                    <div class="th">Used to Date (%)</div>
+                    <div class="th">Achieved to Date (%)</div>
+                </div>
+            </div>
+            <div class="tbody">
+                <div
+                    v-for="i in 20"
+                    class="tr"
+                    ng-repeat="budget in budgetHList"
+                >
+                    <div class="td">
+                        22-212 Total Constructions Miranda{{ i }}
+                    </div>
+                    <div class="td">504h</div>
+                    <div class="td">102h</div>
+                    <div class="td">402</div>
+                    <div class="td">20.00%</div>
+                    <div class="td">10.00%</div>
+                </div>
+            </div>
+            <div class="tfooter">
+                <div class="tr">
+                    <div class="td">Totals</div>
+                    <div class="td">1,504h</div>
+                    <div class="td">122h</div>
+                    <div class="td">1,382h</div>
+                    <div class="td"></div>
+                    <div class="td"></div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -134,23 +172,28 @@ const showLoading = () => {
 </script>
 
 <style scoped lang="scss">
+@import 'about.scss';
 .box-wrapper {
     width: 1000px;
     display: flex;
     height: 500px;
     border-radius: 4px;
+    padding: 100px;
     > .box1 {
         flex: 1;
         background-color: red;
     }
+
     > .box2 {
         flex: 1;
         background-color: green;
     }
+
     > .box3 {
         flex: 1;
         background-color: blue;
     }
+
     .v-enter-active,
     .v-leave-active {
         transition: opacity 0.3s ease;

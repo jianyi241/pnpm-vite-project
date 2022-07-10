@@ -1,0 +1,115 @@
+.custom-table {
+  display: grid;
+  grid-template-rows: 40px 1fr 40px;
+  grid-template-columns: 1fr;
+  position: relative;
+  width: 100%;
+  max-height: calc(100vh - 360px);
+  font-size: 13px;
+  font-weight: 400;
+  border: 1px solid #E0E0E0;
+  border-radius: 6px;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.custom-table .thead, .custom-table .tbody {
+  background: #FFFFFF;
+}
+
+.custom-table .tr {
+  display: grid;
+}
+
+.table-profit .thead,
+.table-profit .tbody,
+.table-profit .tfooter {
+  min-width: 1938px;
+  max-width: 100%;
+}
+
+.table-profit .tr {
+  grid-template-columns: 2fr repeat(11, 1fr);
+}
+
+.table-budget .tr {
+  grid-template-columns: 2fr repeat(5, 1fr);
+}
+
+.custom-table .tr .td, .custom-table .tr .th {
+  padding: 0 12px;
+  border-right: 1px solid #E0E0E0;
+}
+.custom-table .tr .td:last-child, .custom-table .tr .th:last-child {
+  border-right-width: 0;
+}
+
+.custom-table .thead {
+  height: 40px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+.custom-table .thead .tr {
+  height: 100%;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.custom-table .thead .tr .th {
+  display: flex;
+  align-items: center;
+}
+
+.custom-table .tbody {
+  overflow-y: overlay;
+  border-bottom: 1px solid #E0E0E0;
+  background: #F4F6F8;
+}
+
+.custom-table::-webkit-scrollbar {
+  height: 6px;
+  border-radius: 3px;
+}
+
+.custom-table::-webkit-scrollbar-thumb {
+  background: #C1C1C1;
+  height: 6px;
+  border-radius: 3px;
+}
+
+.custom-table::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.custom-table .tbody::-webkit-scrollbar {
+  width: 6px;
+  border-radius: 3px;
+}
+
+.custom-table .tbody::-webkit-scrollbar-thumb {
+  background: #C1C1C1;
+  width: 6px;
+  border-radius: 3px;
+}
+
+.custom-table .tbody::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.custom-table .tbody .td {
+  display: flex;
+  align-items: center;
+  height: 32px;
+}
+
+.tfooter {
+
+  height: 40px;
+}
+
+.tfooter .td {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
