@@ -26,6 +26,12 @@ const routers: Array<RouteRecordRaw> = [
         path: '/display/grid',
         name: 'Grid',
         component: () => import('@/views/display/grid/grid.vue')
+    },
+    {
+        path: '/three-dimensional',
+        name: 'ThreeDimensional',
+        component: () =>
+            import('@/views/three-dimensional/three-dimensional.vue')
     }
 ]
 
