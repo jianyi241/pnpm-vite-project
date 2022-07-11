@@ -11,6 +11,5 @@ const clock = {
 }
 
 export function bindingClock(app: any) {
-    console.log('app ', app)
     app.directive('clock', clock)
 }

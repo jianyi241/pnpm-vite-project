@@ -7,6 +7,5 @@ const color = {
 }
 
 export function bindingColor(app: any) {
-    console.log('app ', app)
     app.directive('color', color)
 }

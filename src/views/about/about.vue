@@ -96,6 +96,9 @@
                 </div>
             </div>
         </div>
+        <div class="font-demo font-pinyin">带有拼音的字体，得了吧</div>
+        <div class="font-demo font-bamboo_stone">杨任东竹石体</div>
+        <div class="font-demo font-roboto_regular">Roboto-Regular-D0-2</div>
     </div>
 </template>
 
@@ -108,6 +111,8 @@ import useCurrentInstance from '../../hook/useCurrentInstance'
 import RouterUtil from '../../router/instance'
 import Modal from '../../components/Modal.vue'
 // import RichText from '../../components/RichText.vue'
+import './about.js'
+import './demo.ts'
 
 const { globalProperties, proxy } = useCurrentInstance()
 const router = RouterUtil.instance()
@@ -202,6 +207,18 @@ const showLoading = () => {
     .v-enter-from,
     .v-leave-to {
         opacity: 0;
+    }
+}
+.font-demo {
+    font-size: 24px;
+    &.font-pinyin {
+        font-family: Pinyin;
+    }
+    &.font-bamboo_stone {
+        font-family: BambooStone;
+    }
+    &.font-roboto_regular {
+        font-family: RobotoRegular;
     }
 }
 </style>

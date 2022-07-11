@@ -16,7 +16,7 @@ export default ({ mode }) => {
         publicDir: 'public',
         server: {
             host: '0.0.0.0', // 指定服务器应该监听哪个 IP 地址。 如果将此设置为 0.0.0.0 或者 true 将监听所有地址，包括局域网和公网地址。
-            port: 9999, // 端口 默认3000
+            port: 9998, // 端口 默认3000
             strictPort: true, // true时端口被占用时退出
             https: false, // 启用 TLS + HTTP/2。
             open: true, // 运行时自动打开默认浏览器
@@ -89,9 +89,9 @@ export default ({ mode }) => {
             preprocessorOptions: {
                 scss: {
                     additionalData: `
-                    @import "@/assets/styles/_variables.scss";
-                    @import "@/assets/styles/_function.scss";
-                    @import "@/assets/styles/_mixin.scss";`
+                    @import "@/assets/style/common/_variables.scss";
+                    @import "@/assets/style/common/_function.scss";
+                    @import "@/assets/style/common/_mixin.scss";`
                 },
                 styl: {}
             }

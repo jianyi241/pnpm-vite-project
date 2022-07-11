@@ -1,9 +1,4 @@
-import axios, {
-    AxiosInstance,
-    AxiosRequestHeaders,
-    AxiosRequestConfig,
-    Method
-} from 'axios'
+import axios, { AxiosInstance, AxiosRequestConfig, Method } from 'axios'
 import { message } from 'ant-design-vue'
 import { string } from 'fast-glob/out/utils'
 import router from '../../router'
@@ -32,12 +27,12 @@ const removePending = (config: AxiosRequestConfig) => {
         const item = Number(key)
         const list: PendingType = pending[key]
         // 当前请求在数组中存在时执行函数体
-        if (
+        const exists =
             list.url === config.url &&
             list.method === config.method &&
             JSON.stringify(list.params) === JSON.stringify(config.params) &&
             JSON.stringify(list.data) === JSON.stringify(config.data)
-        ) {
+        if (exists) {
             // 执行取消操作
             list.cancel('操作太频繁，请稍后再试')
             // 从数组中移除记录

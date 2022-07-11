@@ -1,0 +1,17 @@
+@font-face {
+  font-family: Pinyin;
+  src: url("../../font/Pinyin.ttf") format('truetype');
+  font-display: swap; // 在字体为加载完成是优先展示文字，待字体加载完成再选成为加载的字体样式。
+}
+
+@font-face {
+  font-family: BambooStone;
+  src: url("../../font/Bamboo-Stone.ttf") format('truetype');
+  font-display: swap; // 在字体为加载完成是优先展示文字，待字体加载完成再选成为加载的字体样式。
+}
+
+@font-face {
+  font-family: RobotoRegular;
+  src: url("../../font/Roboto-Regular.ttf") format('truetype');
+  font-display: swap; // 在字体为加载完成是优先展示文字，待字体加载完成再选成为加载的字体样式。
+}

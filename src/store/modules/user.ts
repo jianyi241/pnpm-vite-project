@@ -3,9 +3,7 @@ import AuthorizeInfo from '../../model/po/AuthorizeInfo'
 
 const user = {
     state: {
-        userInfo: sessionStorage.getItem('userInfo') ?
-            JSON.stringify(sessionStorage.getItem('userInfo')) :
-            '',
+        userInfo: sessionStorage.getItem('userInfo'),
         token: sessionStorage.getItem('token')
     },
     getters: {

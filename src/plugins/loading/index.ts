@@ -8,7 +8,6 @@ const loadingPlugin = {
         const $node = document.createElement('div')
         const _loading = LoadingPlugin.mount($node)
         document.body.appendChild($node)
-        console.log('_loading => ', _loading)
         app.config.globalProperties.$loading = _loading
     }
 }

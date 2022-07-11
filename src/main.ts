@@ -11,6 +11,9 @@ import 'virtual:svg-icons-register'
 import SvgIcon from './components/SvgIcon.vue'
 import loading from './plugins/loading'
 
+// 字体
+import './assets/style/common/font.scss'
+
 const app = createApp(App)
 binding(app) // 绑定指令
 app.use(store)

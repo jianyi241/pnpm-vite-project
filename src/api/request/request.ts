@@ -1,10 +1,7 @@
 import { message } from 'ant-design-vue'
-import { AxiosResponse } from 'axios'
 import { getUrl } from './url-dict'
 import instance from './interceptors'
 import { AxiosRequest, CustomResponse } from './interface'
-import HttpResult from '../../model/HttpResult'
-import AuthorizeInfo from '../../model/po/AuthorizeInfo'
 
 class Request {
     // baseURL
@@ -41,37 +38,38 @@ class Request {
                 .then((res) => {
                     console.log('apiAxios res ', res)
                     // 200:服务端业务处理正常结束
-                    if (res.status === 200) {
-                        if (res.data.code === 200) {
-                            resolve({
-                                status: true,
-                                message: 'success',
-                                data: res.data?.data,
-                                origin: res.data
-                            })
-                        } else {
-                            message.error(res.data?.message || `${url} failed`)
-                            resolve({
-                                status: false,
-                                message: res.data?.message || `${url} failed`,
-                                data: res.data?.data,
-                                origin: res.data
-                            })
-                        }
-                    } else {
+                    if (res.status !== 200) {
                         resolve({
                             status: false,
                             message: res.data?.message || `${url} failed`,
                             data: undefined
+                        })
+                        return
+                    }
+                    if (res.data.code === 200) {
+                        resolve({
+                            status: true,
+                            message: 'success',
+                            data: res.data?.data,
+                            origin: res.data
+                        })
+                    } else {
+                        message
+                            .error(res.data?.message || `${url} failed`)
+                            .then((r) => console.log(r))
+                        resolve({
+                            status: false,
+                            message: res.data?.message || `${url} failed`,
+                            data: res.data?.data,
+                            origin: res.data
                         })
                     }
                 })
                 .catch((err) => {
                     const messageText =
                         err?.data?.message || err?.message || `${url} failed`
-                    message.error(messageText)
-                    // eslint-disable-next-line
-                reject({status: false, message: messageText, data: null});
+                    message.error(messageText).then((r) => console.log(r))
+                    reject(err)
                 })
         })
     }

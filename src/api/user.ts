@@ -1,5 +1,4 @@
 import Request from './request/request'
-import formData from '../util/form-data'
 import AuthorizeInfo from '../model/po/AuthorizeInfo'
 import { CustomResponse } from './request/interface'
 
