@@ -1,5 +1,5 @@
 import { message } from 'ant-design-vue'
-import { getUrl } from './url-dict'
+// import { getUrl } from './url-dict'
 import instance from './interceptors'
 import { AxiosRequest, CustomResponse } from './interface'
 
@@ -22,8 +22,8 @@ class Request {
         responseType
     }: AxiosRequest): Promise<CustomResponse<T>> {
         // url解析
-        const _url = url.split('.')
-        url = getUrl(_url[0], _url[1])
+        // const _url = url.split('.')
+        // url = getUrl(_url[0], _url[1])
 
         return new Promise((resolve, reject) => {
             instance({

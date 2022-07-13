@@ -1,3 +1,5 @@
+import { plus } from 'number-precision'
+
 class About {
     static {
         console.log('init about', this)
@@ -72,3 +74,12 @@ console.log('numArr ', numArr)
 objArr.remove(objArr[1])
 
 console.log('objArr ', objArr)
+
+const sum = plus(0, 1)
+
+const sum1 = plus(1, 2, 3, 4, 5, 6, 7)
+
+const sum2 = plus(0.1, 0.2)
+console.log('sum --- ', sum)
+console.log('sum1 --- ', sum1)
+console.log('sum2 --- ', sum2)

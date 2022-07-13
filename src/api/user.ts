@@ -1,6 +1,7 @@
 import Request from './request/request'
 import AuthorizeInfo from '../model/po/AuthorizeInfo'
 import { CustomResponse } from './request/interface'
+import { user } from './request/url-dict'
 
 class User extends Request {
     /**
@@ -15,7 +16,7 @@ class User extends Request {
         const data = new FormData()
         data.append('userName', userName)
         data.append('password', password)
-        return this.post<AuthorizeInfo>({ url: 'user.login', data: data })
+        return this.post<AuthorizeInfo>({ url: user.login, data: data })
     }
 }
 
