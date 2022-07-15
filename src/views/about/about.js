@@ -1,4 +1,6 @@
-import { plus } from 'number-precision'
+// import { plus } from 'number-precision'
+
+import { AccountType } from '../../model/enum/AccountType'
 
 class About {
     static {
@@ -45,41 +47,65 @@ Array.prototype.remove = function (val) {
     return true
 }
 
-let strArr = ['a', 'b', 'c']
-let numArr = [1, 2, 3, 4]
-let objArr = [
-    {
-        name: 'aaa',
-        gender: 1,
-        age: 18,
-        id: '235343432423434'
-    },
-    {
-        name: 'bbb',
-        gender: 0,
-        age: 22,
-        id: '44444444444444444'
-    },
-    {
-        name: 'ccc',
-        gender: 1,
-        age: 21,
-        id: '53532435453454354'
-    }
-]
-strArr.remove('b')
-console.log('strArr ', strArr)
-numArr.remove(2)
-console.log('numArr ', numArr)
-objArr.remove(objArr[1])
+// let strArr = ['a', 'b', 'c']
+// let numArr = [1, 2, 3, 4]
+// let objArr = [
+//     {
+//         name: 'aaa',
+//         gender: 1,
+//         age: 18,
+//         id: '235343432423434'
+//     },
+//     {
+//         name: 'bbb',
+//         gender: 0,
+//         age: 22,
+//         id: '44444444444444444'
+//     },
+//     {
+//         name: 'ccc',
+//         gender: 1,
+//         age: 21,
+//         id: '53532435453454354'
+//     }
+// ]
+// strArr.remove('b')
+// console.log('strArr ', strArr)
+// numArr.remove(2)
+// console.log('numArr ', numArr)
+// objArr.remove(objArr[1])
+//
+// console.log('objArr ', objArr)
 
-console.log('objArr ', objArr)
+// const sum = plus(0, 1)
+//
+// const sum1 = plus(1, 2, 3, 4, 5, 6, 7)
+//
+// const sum2 = plus(0.1, 0.2)
+// console.log('sum --- ', sum)
+// console.log('sum1 --- ', sum1)
+// console.log('sum2 --- ', sum2)
 
-const sum = plus(0, 1)
+let simplifyStr = function (str) {
+    const resultArr = []
+    const strArr = str.split('')
+    console.log('strArr ', strArr)
+    strArr.forEach((i) => {
+        const lastIdx = resultArr.length - 1
+        if (resultArr.length && resultArr[lastIdx].includes(i)) {
+            let num = resultArr[lastIdx].replace(i, '')
+            num++
+            resultArr[lastIdx] = i + num
+        } else {
+            resultArr.push(i + 1)
+        }
+    })
+    return resultArr.join('')
+}
 
-const sum1 = plus(1, 2, 3, 4, 5, 6, 7)
+const strSimple = simplifyStr('aabbbbccccdhhhhhhhhhhhhhhhhhhhhhheeeeerrr')
+console.log('simple str ', strSimple)
 
-const sum2 = plus(0.1, 0.2)
-console.log('sum --- ', sum)
-console.log('sum1 --- ', sum1)
-console.log('sum2 --- ', sum2)
+console.log('AccountType values -', AccountType.values())
+console.log('AccountType email  -', AccountType.email.value)
+console.log('AccountType mobile -', AccountType.mobile.value)

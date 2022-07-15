@@ -68,6 +68,7 @@ module.exports = {
         'init-declarations': 'off', // 声明时必须赋初始值
         'key-spacing': ['off', { 'beforeColon': false, 'afterColon': true }], // 对象字面量中冒号的前后空格
         'lines-around-comment': 'off', // 行前/行后备注
+        'lines-between-class-members': 'off', // 类成员线路
         'max-depth': ['off', 4], // 嵌套块深度
         'max-len': ['off', 80, 4], // 字符串最大长度
         'max-nested-callbacks': ['off', 'error'], // 回调嵌套深度

@@ -113,7 +113,7 @@ import Modal from '../../components/Modal.vue'
 // import RichText from '../../components/RichText.vue'
 import './about.js'
 import './demo.ts'
-import '../data-structure/LinkedList.js'
+import '../data-structure/LinkedList/LinkedList.js'
 
 const { globalProperties, proxy } = useCurrentInstance()
 const router = RouterUtil.instance()
