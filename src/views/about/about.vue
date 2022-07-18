@@ -212,6 +212,7 @@ const showLoading = () => {
 }
 .font-demo {
     font-size: 24px;
+    display: inline-block;
     &.font-pinyin {
         font-family: Pinyin;
     }
@@ -220,6 +221,19 @@ const showLoading = () => {
     }
     &.font-roboto_regular {
         font-family: RobotoRegular;
+        background: linear-gradient(
+            85deg,
+            #f98e2b 0.16%,
+            #f88a33 5.81%,
+            #f57459 37%,
+            #f46770 62.02%,
+            #f36279 77.6%,
+            #f35a84 95.16%,
+            #f144a1 125.9%,
+            #f02bc2 154.54%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 }
 </style>
