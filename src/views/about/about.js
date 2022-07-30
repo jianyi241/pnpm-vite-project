@@ -1,91 +1,3 @@
-// import { plus } from 'number-precision'
-
-import { AccountType } from '../../model/enum/AccountType'
-
-class About {
-    static {
-        console.log('init about', this)
-    }
-}
-
-let aa = 'aa'
-let aA = 'AA'
-
-console.log('aa ', aa)
-console.log('aA ', aA)
-
-About.prototype.name = 'Tom'
-const about = new About()
-console.log('about ', about.name)
-function agrFunc(a, b, c) {
-    console.log('arguments ', arguments.length)
-}
-
-agrFunc('12345', 'b')
-
-function Student() {
-    console.log('init student func class', this)
-    this.sayHi = function () {
-        console.log(`My name is ${this.name}`)
-    }
-}
-Student.prototype.name = 'David'
-const student = new Student()
-student.sayHi()
-
-console.log('student object ', student)
-
-// eslint-disable-next-line no-extend-native
-Array.prototype.remove = function (val) {
-    const index = this.findIndex(
-        (i) => JSON.stringify(i) === JSON.stringify(val)
-    )
-    if (index === -1) {
-        return false
-    }
-    this.splice(index, 1)
-    return true
-}
-
-// let strArr = ['a', 'b', 'c']
-// let numArr = [1, 2, 3, 4]
-// let objArr = [
-//     {
-//         name: 'aaa',
-//         gender: 1,
-//         age: 18,
-//         id: '235343432423434'
-//     },
-//     {
-//         name: 'bbb',
-//         gender: 0,
-//         age: 22,
-//         id: '44444444444444444'
-//     },
-//     {
-//         name: 'ccc',
-//         gender: 1,
-//         age: 21,
-//         id: '53532435453454354'
-//     }
-// ]
-// strArr.remove('b')
-// console.log('strArr ', strArr)
-// numArr.remove(2)
-// console.log('numArr ', numArr)
-// objArr.remove(objArr[1])
-//
-// console.log('objArr ', objArr)
-
-// const sum = plus(0, 1)
-//
-// const sum1 = plus(1, 2, 3, 4, 5, 6, 7)
-//
-// const sum2 = plus(0.1, 0.2)
-// console.log('sum --- ', sum)
-// console.log('sum1 --- ', sum1)
-// console.log('sum2 --- ', sum2)
-
 let simplifyStr = function (str) {
     const resultArr = []
     const strArr = str.split('')
@@ -102,10 +14,66 @@ let simplifyStr = function (str) {
     })
     return resultArr.join('')
 }
+console.log(
+    '======================== 定义字面量函数 调用箭头函数指向 ========================'
+)
+const demo = {
+    name: 'demo',
+    func() {
+        console.log('demo func', this)
+    },
+    funcArrow: () => {
+        console.log('demo func ', this)
+    }
+}
 
-const strSimple = simplifyStr('aabbbbccccdhhhhhhhhhhhhhhhhhhhhhheeeeerrr')
-console.log('simple str ', strSimple)
+demo.func()
+demo.funcArrow()
 
-console.log('AccountType values -', AccountType.values())
-console.log('AccountType email  -', AccountType.email.value)
-console.log('AccountType mobile -', AccountType.mobile.value)
+console.log(
+    '======================== 定义构造函数函数 调用箭头函数指向 ========================'
+)
+function Demo1() {
+    this.name = 'Demo1'
+    this.func = function (a, b) {
+        console.log('Demo1 func ', this, `从${a}到${b}`)
+    }
+    this.funcArrow = () => {
+        console.log('Demo1 func ', this)
+    }
+}
+
+const demo1 = new Demo1()
+demo1.func()
+demo1.funcArrow()
+
+console.log(
+    '======================== 定义class 调用箭头函数指向 ========================'
+)
+class Demo2 {
+    constructor() {
+        this.name = 'Demo2'
+    }
+
+    func() {
+        console.log('Demo2 func ', this)
+    }
+
+    funcArrow = () => {
+        console.log('Demo2 func ', this)
+    }
+}
+
+const demo2 = new Demo2()
+demo2.func()
+demo2.funcArrow()
+console.log(
+    '======================== apply、bind、call 改变this指向 ========================'
+)
+const demo1Call = demo1.func.call(demo2, '11', '22')
+const demo1Apply = demo1.func.apply(demo, ['南京', '徐州'])
+const demo1Bind = demo1.func.bind(demo2, '徐州', '南京')()
+console.log('demo1Call ', demo1Call)
+console.log('demo1Apply ', demo1Apply)
+console.log('demo1Bind ', demo1Bind)
+console.log('global this ', this)

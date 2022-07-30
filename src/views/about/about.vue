@@ -112,8 +112,7 @@ import RouterUtil from '../../router/instance'
 import Modal from '../../components/Modal.vue'
 // import RichText from '../../components/RichText.vue'
 import './about.js'
-import './demo.ts'
-import '../data-structure/LinkedList/LinkedList.js'
+// import './demo.ts'
 
 const { globalProperties, proxy } = useCurrentInstance()
 const router = RouterUtil.instance()

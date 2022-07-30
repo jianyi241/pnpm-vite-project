@@ -32,6 +32,16 @@ const routers: Array<RouteRecordRaw> = [
         name: 'ThreeDimensional',
         component: () =>
             import('@/views/three-dimensional/three-dimensional.vue')
+    },
+    {
+        path: '/data-structure',
+        name: 'DataStructure',
+        component: () => import('@/views/data-structure/data-structure.vue')
+    },
+    {
+        path: '/ramda',
+        name: 'Ramda',
+        component: () => import('@/views/ramda/ramda.vue')
     }
 ]
 
