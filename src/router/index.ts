@@ -39,9 +39,9 @@ const routers: Array<RouteRecordRaw> = [
         component: () => import('@/views/data-structure/data-structure.vue')
     },
     {
-        path: '/ramda',
-        name: 'Ramda',
-        component: () => import('@/views/ramda/ramda.vue')
+        path: '/bim',
+        name: 'Bim',
+        component: () => import('@/views/bim/bim.vue')
     }
 ]
 

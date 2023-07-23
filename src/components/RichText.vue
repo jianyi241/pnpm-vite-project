@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, watch, ref, onMounted } from 'vue'
+import { watch, ref, onMounted } from 'vue'
 
 const name = 'RichText'
 const richTextContent = ref('')

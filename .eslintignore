@@ -3,6 +3,7 @@ node_modules
 *.md
 *.woff
 *.ttf
+*.html
 .vscode
 .idea
 dist

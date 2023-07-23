@@ -15,15 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-    defineProps,
-    onMounted,
-    Prop,
-    ref,
-    SetupContext,
-    toRef,
-    toRefs
-} from 'vue'
+import { onMounted, Prop, ref, SetupContext, toRef, toRefs } from 'vue'
 import { MenuItem } from '../model/components/DropDown'
 
 // eslint-disable-next-line vue/no-setup-props-destructure
@@ -32,7 +24,7 @@ const {
     menus,
     triangle = true
 } = defineProps<{ name: string; menus: Array<MenuItem>; triangle: boolean }>()
-const emit = defineEmits<{(e: 'choose', value: MenuItem): void }>()
+const emit = defineEmits<{ (e: 'choose', value: MenuItem): void }>()
 onMounted(() => {
     console.log('name ', name)
     console.log('menus ', menus)

@@ -3,7 +3,6 @@ import Antd from 'ant-design-vue'
 import App from './App.vue'
 import store from './store'
 import router from './router'
-import 'ant-design-vue/dist/antd.css'
 import 'moment/locale/zh-cn'
 import { binding } from './directives'
 
@@ -13,6 +12,7 @@ import loading from './plugins/loading'
 
 // 字体
 import './assets/style/common/font.scss'
+import './assets/style/common/index.scss'
 
 const app = createApp(App)
 binding(app) // 绑定指令

@@ -75,7 +75,6 @@ import Test from '../../components/Test.vue'
 import SvgIcon from '../../components/SvgIcon.vue'
 import RouterUtil from '../../router/instance'
 import useCurrentInstance from '../../hook/useCurrentInstance'
-import WangEditor from '../../components/WangEditor.vue'
 import './index.js'
 
 const { globalProperties, proxy } = useCurrentInstance()

@@ -26,7 +26,8 @@
     "rxjs": "^7.5.5",
     "vue": "^3.2.25",
     "vue-router": "^4.0.15",
-    "vuex": "^4.0.2"
+    "vuex": "^4.0.2",
+    "@types/forge-viewer": "^7.69.5"
   },
   "devDependencies": {
     "@types/node": "^17.0.35",

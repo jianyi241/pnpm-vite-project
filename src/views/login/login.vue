@@ -45,8 +45,8 @@
 </template>
 
 <script setup lang="ts">
-import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
-import { ref, reactive, onMounted } from 'vue'
+import { LockOutlined, UserOutlined } from '@ant-design/icons-vue'
+import { onMounted, reactive, ref } from 'vue'
 import { useForm } from 'ant-design-vue/es/form'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
@@ -94,8 +94,7 @@ const onSubmit = () => {
         .validate()
         .then(() => {
             console.log('values', formState)
-            const encryptPwd = rsaEncryption.encrypt(formState.password)
-            formState.password = encryptPwd
+            formState.password = rsaEncryption.encrypt(formState.password)
             loading.value = true
             user.loginIn({ ...formState, verifyCode: '2323' })
                 .then((res) => {
@@ -118,7 +117,7 @@ const onSubmit = () => {
                     new Error(err)
                 })
         })
-        .catch((error: any) => {
+        .catch((error) => {
             console.log('error', error)
         })
 }

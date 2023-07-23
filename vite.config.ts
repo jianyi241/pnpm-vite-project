@@ -30,7 +30,7 @@ export default ({ mode }) => {
             },
             cors: false, // 为开发服务器配置 CORS。默认启用并允许任何源，传递一个 选项对象 来调整行为或设为 false 表示禁用。
             hmr: true, // 禁用或配置 HMR 连接（用于 HMR websocket 必须使用不同的 http 服务器地址的情况,默认打开,否则无法热更新）。
-            base: '', // undefined | string 在 HTTP 请求中预留此文件夹，用于代理 Vite 作为子文件夹时使用。应该以 / 字符开始和结束。
+            //base: '', // undefined | string 在 HTTP 请求中预留此文件夹，用于代理 Vite 作为子文件夹时使用。应该以 / 字符开始和结束。
             headers: {} // 指定服务器响应的header
         },
         build: {

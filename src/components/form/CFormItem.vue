@@ -8,9 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue'
-
-defineProps({
+const props = defineProps({
     label: {
         type: String,
         required: true,

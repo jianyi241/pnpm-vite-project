@@ -1,0 +1,14 @@
+eyJhbGciOiJSUzI1NiIsImtpZCI6IlU3c0dGRldUTzlBekNhSzBqZURRM2dQZXBURVdWN2VhIiwicGkuYXRtIjoiN3ozaCJ9.eyJzY29wZSI6WyJkYXRhOnJlYWQiLCJkYXRhOndyaXRlIiwiYnVja2V0OmNyZWF0ZSJdLCJjbGllbnRfaWQiOiJzUlQwc3VwTUczcTVVSG01OTQyQUFaUHd6aXB0bVBCTSIsImF1ZCI6Imh0dHBzOi8vYXV0b2Rlc2suY29tL2F1ZC9hand0ZXhwNjAiLCJqdGkiOiJ6TmxSaDNoanFESklqbk15YVc5cUZzVXdoUm03N05lWXBKR1BEY2l2ZVBEdzVrV0FDOW9tZ0lWYkI1akE1VlhnIiwiZXhwIjoxNjkwMDkxNDM4fQ.FJz_YMM48gx7r-r7oC8pYmnMRC-TzQEJpvL6nJRQ2GqfydynI-FZJm_v0j7j-Ck3-CMb6s8GMuN8PwO90pqjTSmwvf8tcPP4ZpFQVGJOqibYQFZqnadkkcy_BMsphdXVR885F-UMhZDqSQyvi77Z6bH7PYvbu4mLO2nk82EvDcV-PZWeLVmzgASsSDyJ0zZglfxljvgDLLgBj7IB6vEc1I9bVX7xdkRA8SbI5WZPVsNXT_xsxRaaEA_RSqu0R1M7Ld6VKxtXlzytds1Xzm8J6bUizwp-KIt_Ti2LsQ1-7Qv0I_fWFkeve5Z4FNqcqWs4Wz7sJLlNFkRiYAIsp24Uhw
+
+
+
+https://developer.api.autodesk.com/oss/v2/buckets/chenchanghao-bucket/objects/threefloorbuilding.rvt 结果
+{
+  "bucketKey" : "chenchanghao-bucket",
+  "objectId" : "urn:adsk.objects:os.object:chenchanghao-bucket/threefloorbuilding.rvt",
+  "objectKey" : "threefloorbuilding.rvt",
+  "sha1" : "4ec977e4e47ee3f6d24039ce17da29051179d67a",
+  "size" : 14295250,
+  "contentType" : "application/octet-stream",
+  "location" : "https://developer.api.autodesk.com/oss/v2/buckets/chenchanghao-bucket/objects/threefloorbuilding.rvt"
+}
