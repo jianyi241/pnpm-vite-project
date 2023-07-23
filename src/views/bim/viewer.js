@@ -5,19 +5,18 @@ export const APP_URL = 'https://aps-codepen.autodesk.io'
 export const BUCKET = {
     bucketKey: 'chenchanghao-bucket',
     objectId:
-        'urn:adsk.objects:os.object:chenchanghao-bucket/threefloorbuilding.rvt',
-    objectKey: 'threefloorbuilding.rvt',
-    sha1: 'bf627c7aa58e485a852d2d44dee1b2f615531b53',
-    size: 14295250,
+        'urn:adsk.objects:os.object:chenchanghao-bucket/rstbasicsampleproject.rvt',
+    objectKey: 'rstbasicsampleproject.rvt',
+    sha1: '22f884c0224a8b9bc0dea5ae0c617e0b3e870991',
+    size: 6602965,
     contentType: 'application/octet-stream',
     location:
-        'https://developer.api.autodesk.com/oss/v2/buckets/chenchanghao-bucket/objects/threefloorbuilding.rvt'
+        'https://developer.api.autodesk.com/oss/v2/buckets/chenchanghao-bucket/objects/rstbasicsampleproject.rvt'
 }
 
 export const SVF_INFO = {
-    result: 'created',
-    urn: 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6Y2hlbmNoYW5naGFvLWJ1Y2tldC90aHJlZWZsb29yYnVpbGRpbmcucnZ0',
-    registerKeys: ['303e49ac-f697-49e9-b8d4-86cef2649641'],
+    result: 'success',
+    urn: 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6Y2hlbmNoYW5naGFvLWJ1Y2tldC9yc3RiYXNpY3NhbXBsZXByb2plY3QucnZ0',
     acceptedJobs: {
         output: {
             formats: [
@@ -44,7 +43,7 @@ export function getAccessToken(callback) {
             client_id: FORGE_CLIENT_ID,
             client_secret: FORGE_CLIENT_SECRET,
             grant_type: 'client_credentials',
-            scope: 'data:read data:write bucket:create'
+            scope: 'data:read data:write bucket:create bucket:read viewables:read'
         })
     })
         .then((resp) => (resp.ok ? resp.json() : Promise.reject(resp)))
@@ -107,6 +106,30 @@ export function createBucket(callback) {
         .catch((err) => {
             console.error(err)
             alert('Could not create bucket. See console for more details.')
+        })
+}
+
+export function getBucketList(callback) {
+    return fetch('https://developer.api.autodesk.com/oss/v2/buckets', {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem(
+                'AUTODESK_ACCESS_TOKEN'
+            )}`,
+            'Content-Type': 'application/json'
+        }
+    })
+        .then((res) => {
+            console.log('get bucket list res ===> ', res)
+            return res.json
+        })
+        .then((data) => {
+            console.log('download bucket data ===> ', data)
+            callback(data)
+        })
+        .catch((err) => {
+            console.error(err)
+            alert('Could not download bucket. See console for more details.')
         })
 }
 

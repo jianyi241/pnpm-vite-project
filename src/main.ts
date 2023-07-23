@@ -5,7 +5,7 @@ import store from './store'
 import router from './router'
 import 'moment/locale/zh-cn'
 import { binding } from './directives'
-
+import 'ant-design-vue/dist/antd.css'
 import 'virtual:svg-icons-register'
 import SvgIcon from './components/SvgIcon.vue'
 import loading from './plugins/loading'

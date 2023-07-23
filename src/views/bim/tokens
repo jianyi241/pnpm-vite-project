@@ -12,3 +12,6 @@ https://developer.api.autodesk.com/oss/v2/buckets/chenchanghao-bucket/objects/th
   "contentType" : "application/octet-stream",
   "location" : "https://developer.api.autodesk.com/oss/v2/buckets/chenchanghao-bucket/objects/threefloorbuilding.rvt"
 }
+
+
+https://cdn.derivative.autodesk.com/derivativeservice/v2/manifest/dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6Y2hlbmNoYW5naGFvLWJ1Y2tldC9yc3RiYXNpY3NhbXBsZXByb2plY3QucnZ0?domain=http%3A%2F%2F192.168.0.169%3A9998

@@ -1,9 +1,16 @@
 <template>
     <div class="container">
+        <div class="edit-wrap">
+            <div class="edit-item">
+                上传文件.rvt文件到存储桶
+                <input type="file" @change="onFileSelected" />
+            </div>
+            <a-button type="primary" @click="translateToSvf"
+                >转换为svf</a-button
+            >
+            <a-button type="danger" @click="download">获取bucket列表</a-button>
+        </div>
         <div id="viewer"></div>
-        <!--        <select id="models"></select>-->
-        <input type="file" @change="onFileSelected" />
-        <button @click="translateToSvf">转换为svf</button>
     </div>
 </template>
 
@@ -15,13 +22,13 @@ import {
     getAccessToken,
     createBucket,
     uploadFile,
+    getBucketList,
     rvtTranslateScf,
     SVF_INFO,
     BUCKET
 } from './viewer'
 
 onMounted(() => {
-    // createBucket(function (data) {})
     console.log('log window ===> ', window)
     // getAccessToken(function (token, ww) {
     //     console.log('token ', token)
@@ -36,6 +43,12 @@ const translateToSvf = () => {
     rvtTranslateScf()
 }
 
+const download = () => {
+    getBucketList(function (data) {
+        console.log('getBucketList  data ===> ', data)
+    })
+}
+
 const onFileSelected = (e) => {
     console.log()
     // 调用上传文件的函数
@@ -44,9 +57,12 @@ const onFileSelected = (e) => {
 }
 
 const init = async (): Promise<void> => {
-    const view = await initViewer(document.getElementById('viewer'), {
-        extensions: ['Autodesk.DocumentBrowser']
-    })
+    const view = await initViewer(
+        document.getElementById('viewer') as HTMLDivElement,
+        {
+            extensions: ['Autodesk.DocumentBrowser']
+        }
+    )
     console.log('init view ===> ', view)
     loadModel(view, SVF_INFO.urn)
 }
@@ -58,6 +74,13 @@ const init = async (): Promise<void> => {
     width: 100%;
     height: 100vh;
     background: #43bd85;
+    .edit-wrap {
+        height: 40px;
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        padding: 0 24px;
+    }
     #viewer {
         position: absolute;
         top: 40px;
