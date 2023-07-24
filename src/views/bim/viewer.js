@@ -1,22 +1,25 @@
-import { FORGE_CLIENT_ID, FORGE_CLIENT_SECRET } from '@/views/bim/util'
+const FORGE_CLIENT_ID = 'sRT0supMG3q5UHm5942AAZPwziptmPBM'
+const FORGE_CLIENT_SECRET = 'KeEWMukfQzZ05pcB'
+const FORGE_BUCKET = 'bucket_1690201708'
 
 export const APP_URL = 'https://aps-codepen.autodesk.io'
+export const BASE_API = 'https://developer.api.autodesk.com'
 
 export const BUCKET = {
-    bucketKey: 'chenchanghao-bucket',
+    bucketKey: 'bucket_1690201708',
     objectId:
-        'urn:adsk.objects:os.object:chenchanghao-bucket/rstbasicsampleproject.rvt',
+        'urn:adsk.objects:os.object:bucket_1690201708/rstbasicsampleproject.rvt',
     objectKey: 'rstbasicsampleproject.rvt',
-    sha1: '22f884c0224a8b9bc0dea5ae0c617e0b3e870991',
+    sha1: '007ae69475fad6f174a9ee1fc6d93cd25c086347',
     size: 6602965,
     contentType: 'application/octet-stream',
     location:
-        'https://developer.api.autodesk.com/oss/v2/buckets/chenchanghao-bucket/objects/rstbasicsampleproject.rvt'
+        'https://developer.api.autodesk.com/oss/v2/buckets/bucket_1690201708/objects/rstbasicsampleproject.rvt'
 }
 
 export const SVF_INFO = {
     result: 'success',
-    urn: 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6Y2hlbmNoYW5naGFvLWJ1Y2tldC9yc3RiYXNpY3NhbXBsZXByb2plY3QucnZ0',
+    urn: 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6YnVja2V0XzE2OTAyMDE3MDgvcnN0YmFzaWNzYW1wbGVwcm9qZWN0LnJ2dA',
     acceptedJobs: {
         output: {
             formats: [
@@ -34,7 +37,7 @@ export const SVF_INFO = {
  * @param {(string, number) => void} callback Function that will be called with generated access token and number of seconds before it expires.
  */
 export function getAccessToken(callback) {
-    fetch('https://developer.api.autodesk.com/authentication/v1/authenticate', {
+    fetch(`${BASE_API}/authentication/v1/authenticate`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -43,7 +46,7 @@ export function getAccessToken(callback) {
             client_id: FORGE_CLIENT_ID,
             client_secret: FORGE_CLIENT_SECRET,
             grant_type: 'client_credentials',
-            scope: 'data:read data:write bucket:create bucket:read viewables:read'
+            scope: 'data:read data:write bucket:create bucket:read bucket:update bucket:delete'
         })
     })
         .then((resp) => (resp.ok ? resp.json() : Promise.reject(resp)))
@@ -84,8 +87,8 @@ export function initViewer(container, config) {
     })
 }
 
-export function createBucket(callback) {
-    return fetch('https://developer.api.autodesk.com/oss/v2/buckets', {
+export function createBucket(bucketName, callback) {
+    return fetch(`${BASE_API}/oss/v2/buckets`, {
         method: 'POST',
         headers: {
             Authorization: `Bearer ${localStorage.getItem(
@@ -94,7 +97,7 @@ export function createBucket(callback) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            bucketKey: 'chenchanghao-bucket',
+            bucketKey: bucketName,
             policyKey: 'transient' // transient表示24小时失效，persistent表示永久
         })
     })
@@ -110,7 +113,7 @@ export function createBucket(callback) {
 }
 
 export function getBucketList(callback) {
-    return fetch('https://developer.api.autodesk.com/oss/v2/buckets', {
+    return fetch(`${BASE_API}/oss/v2/buckets`, {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${localStorage.getItem(
@@ -129,7 +132,30 @@ export function getBucketList(callback) {
         })
         .catch((err) => {
             console.error(err)
-            alert('Could not download bucket. See console for more details.')
+            alert('Could not bucket list. See console for more details.')
+        })
+}
+
+export function getContentByBucket() {
+    return fetch(`${BASE_API}/oss/v2/buckets/${BUCKET.bucketKey}/objects`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem(
+                'AUTODESK_ACCESS_TOKEN'
+            )}`,
+            'Content-Type': 'application/json'
+        }
+    })
+        .then((res) => {
+            console.log('get bucket content res ===> ', res)
+            return res.json
+        })
+        .then((data) => {
+            console.log('get bucket content data ===> ', data)
+        })
+        .catch((err) => {
+            console.error(err)
+            alert('Could not bucket content. See console for more details.')
         })
 }
 
@@ -137,8 +163,7 @@ export function getBucketList(callback) {
 export function rvtTranslateScf() {
     console.log('base64 urn ===> ', btoa(BUCKET.objectId))
     // 构造请求URL和请求正文
-    const url =
-        'https://developer.api.autodesk.com/modelderivative/v2/designdata/job'
+    const url = `${BASE_API}/modelderivative/v2/designdata/job`
     const headers = new Headers({
         Authorization: `Bearer ${localStorage.getItem(
             'AUTODESK_ACCESS_TOKEN'
@@ -187,7 +212,7 @@ export function uploadFile(file) {
     formData.append('file', file)
 
     // 构造请求对象，包括URL、请求头部和请求正文
-    const url = `https://developer.api.autodesk.com/oss/v2/buckets/chenchanghao-bucket/objects/${file.name}`
+    const url = `${BASE_API}/oss/v2/buckets/${FORGE_BUCKET}/objects/${file.name}`
     const headers = new Headers({
         Authorization: `Bearer ${localStorage.getItem(
             'AUTODESK_ACCESS_TOKEN'
@@ -214,9 +239,64 @@ export function uploadFile(file) {
         })
 }
 
+// 获取SVFMetadata
+export function getSVFMetadata(urn) {
+    const url = `${BASE_API}/modelderivative/v2/designdata/${encodeURIComponent(
+        urn
+    )}/metadata`
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem(
+                'AUTODESK_ACCESS_TOKEN'
+            )}`,
+            'Content-Type': 'application/json'
+        }
+    })
+        .then((response) => {
+            if (response.ok) {
+                return response.json()
+            }
+            throw new Error('Failed to get SVF metadata')
+        })
+        .then((data) => {
+            console.log('SVF metadata:', data)
+        })
+        .catch((error) => {
+            console.error('Error:', error)
+        })
+}
+
+// 获取SVFManifest
+export function getSVFManifest(urn) {
+    const url = `${BASE_API}/modelderivative/v2/designdata/${urn}/manifest`
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem(
+                'AUTODESK_ACCESS_TOKEN'
+            )}`,
+            'Content-Type': 'application/json'
+        }
+    })
+        .then((response) => {
+            if (response.ok) {
+                return response.json()
+            }
+            throw new Error('Failed to get SVF manifest')
+        })
+        .then((data) => {
+            console.log('SVF manifest:', data)
+        })
+        .catch((error) => {
+            console.error('Error:', error)
+        })
+}
+
 /**
  * Lists all models available for viewing.
  * @async
+ * @url /oss/v2/buckets/{bucketKey}/objects
  * @returns {Promise<{ name: string, urn: string }>} List of models.
  */
 export function listModels() {

@@ -5,10 +5,23 @@
                 上传文件.rvt文件到存储桶
                 <input type="file" @change="onFileSelected" />
             </div>
+            <div class="edit-item">
+                <input v-model="bucketName" placeholder="新建存储桶" />
+                <a-button @click="handleCreateBucket">点击创建</a-button>
+            </div>
             <a-button type="primary" @click="translateToSvf"
                 >转换为svf</a-button
             >
             <a-button type="danger" @click="download">获取bucket列表</a-button>
+            <a-button type="primary" @click="getSVFMetadata(SVF_INFO.urn)"
+                >getSVFMetadata</a-button
+            >
+            <a-button type="primary" @click="getSVFManifest(SVF_INFO.urn)"
+                >getSVFManifest</a-button
+            >
+            <a-button type="primary" @click="getContentByBucket"
+                >getBucketContent</a-button
+            >
         </div>
         <div id="viewer"></div>
     </div>
@@ -25,6 +38,9 @@ import {
     getBucketList,
     rvtTranslateScf,
     SVF_INFO,
+    getSVFMetadata,
+    getSVFManifest,
+    getContentByBucket,
     BUCKET
 } from './viewer'
 
@@ -38,6 +54,13 @@ onMounted(() => {
     // })
     init()
 })
+const bucketName = ref<string>()
+
+const handleCreateBucket = (): void => {
+    createBucket(bucketName.value, function (res) {
+        console.log('handleCreateBucket result ===> ', res)
+    })
+}
 
 const translateToSvf = () => {
     rvtTranslateScf()
@@ -80,6 +103,10 @@ const init = async (): Promise<void> => {
         gap: 24px;
         align-items: center;
         padding: 0 24px;
+        .edit-item {
+            display: flex;
+            gap: 8px;
+        }
     }
     #viewer {
         position: absolute;
