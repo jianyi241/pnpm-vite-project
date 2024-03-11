@@ -99,6 +99,9 @@
         <div class="font-demo font-pinyin">带有拼音的字体，得了吧</div>
         <div class="font-demo font-bamboo_stone">杨任东竹石体</div>
         <div class="font-demo font-roboto_regular">Roboto-Regular-D0-2</div>
+        <div class="animation">
+            <div class="player-01"></div>
+        </div>
     </div>
 </template>
 
@@ -113,6 +116,7 @@ import Modal from '../../components/Modal.vue'
 // import RichText from '../../components/RichText.vue'
 import './about.js'
 // import './demo.ts'
+import './genshin-resources/index'
 
 const { globalProperties, proxy } = useCurrentInstance()
 const router = RouterUtil.instance()
@@ -233,6 +237,50 @@ const showLoading = () => {
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+    }
+}
+
+.player-01 {
+    width: 100%;
+    height: 200px;
+    animation: player01 0.5s 0s infinite normal ease forwards;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+
+@keyframes player01 {
+    0% {
+        background-image: url('./animation-role/player_0001/06.png');
+        background-position: 0 0;
+    }
+    14% {
+        background-image: url('./animation-role/player_0001/07.png');
+        background-position: 3px 0;
+    }
+    28% {
+        background-image: url('./animation-role/player_0001/08.png');
+        background-position: 6px 0;
+    }
+    42% {
+        background-image: url('./animation-role/player_0001/09.png');
+        background-position: 9px 0;
+    }
+    56% {
+        background-image: url('./animation-role/player_0001/06.png');
+        background-position: 12px 0;
+    }
+    70% {
+        background-image: url('./animation-role/player_0001/07.png');
+        background-position: 15px 0;
+    }
+    84% {
+        background-image: url('./animation-role/player_0001/08.png');
+        background-position: 18px 0;
+    }
+    98% {
+        background-image: url('./animation-role/player_0001/09.png');
+        background-position: 21px 0;
     }
 }
 </style>

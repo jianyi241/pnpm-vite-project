@@ -42,6 +42,12 @@ const routers: Array<RouteRecordRaw> = [
         path: '/bim',
         name: 'Bim',
         component: () => import('@/views/bim/bim.vue')
+    },
+    {
+        path: '/gs',
+        name: 'GS',
+        component: () =>
+            import('@/views/genshin-animation/genshin-animation.vue')
     }
 ]
 
