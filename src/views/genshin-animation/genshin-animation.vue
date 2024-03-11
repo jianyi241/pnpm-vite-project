@@ -1,10 +1,9 @@
 <template>
-    <gs></gs>
+    <div></div>
 </template>
 
 <script setup lang="ts">
-import './index'
-import gs from './gs.vue'
+import './genshin-animation.js'
 </script>
 
 <style scoped lang="scss"></style>

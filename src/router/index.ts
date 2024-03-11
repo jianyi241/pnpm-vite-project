@@ -48,6 +48,11 @@ const routers: Array<RouteRecordRaw> = [
         name: 'GS',
         component: () =>
             import('@/views/genshin-animation/genshin-animation.vue')
+    },
+    {
+        path: '/three',
+        name: 'Three',
+        component: () => import('@/views/three/three-demo.vue')
     }
 ]
 
