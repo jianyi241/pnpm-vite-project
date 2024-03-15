@@ -4,14 +4,14 @@
             :width="775"
             :height="916"
             :manifest="manifest"
-            :scene-data="sceneData"
+            :spine-data="spineData"
             :resolution-ratio="1"
         ></spine-player>
     </div>
 </template>
 
 <script setup lang="ts">
-import { manifest, sceneData } from './index.js'
+import { manifest, spineData } from './index.js'
 import SpinePlayer from '@/views/genshin-animation/spine-player.vue'
 </script>
 
