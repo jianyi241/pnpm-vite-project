@@ -48,12 +48,12 @@ const routers: Array<RouteRecordRaw> = [
         name: 'GS',
         component: () =>
             import('@/views/genshin-animation/genshin-animation.vue')
+    },{
+        path: '/phaser',
+        name: 'Phaser',
+        component: () =>
+            import('@/views/phaser/phaser-demo.vue')
     },
-    {
-        path: '/three',
-        name: 'Three',
-        component: () => import('@/views/three/three-demo.vue')
-    }
 ]
 
 const routerHistory: RouterHistory = createWebHistory(import.meta.env.BASE_URL)

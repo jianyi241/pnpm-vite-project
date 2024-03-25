@@ -25,6 +25,21 @@
         <a-button type="primary" @click="getEnvironmentInfo()">
             获取env信息
         </a-button>
+        <div style="border: 1px solid #ccc">
+            <Toolbar
+                style="border-bottom: 1px solid #ccc"
+                :editor="editorRef"
+                :defaultConfig="toolbarConfig"
+                :mode="mode"
+            />
+            <Editor
+                style="height: 500px; overflow-y: hidden;"
+                v-model="valueHtml"
+                :defaultConfig="editorConfig"
+                :mode="mode"
+                @onCreated="handleCreated"
+            />
+        </div>
         <!--        <rich-text-->
         <!--            style="width: 220px"-->
         <!--            :text="htmlText"-->
@@ -58,7 +73,7 @@
                 <dialog :open="visible">原生dialog</dialog>
             </Transition>
         </div>
-        <div class="custom-table table-budget">
+        <div class="custom-table table-budget" v-if="0">
             <div class="thead">
                 <div class="tr">
                     <div class="th">Project</div>
@@ -106,7 +121,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import {ref, onUnmounted, onMounted, onBeforeUnmount, shallowRef, watch} from 'vue'
 import { useRouter } from 'vue-router'
 import DropDown from '../../components/DropDown.vue'
 import { MenuItem } from '../../model/components/DropDown'
@@ -117,7 +132,8 @@ import Modal from '../../components/Modal.vue'
 import './about.js'
 // import './demo.ts'
 import './genshin-resources/index'
-
+import {Editor, Toolbar} from '@wangeditor/editor-for-vue'
+import '@wangeditor/editor/dist/css/style.css'
 const { globalProperties, proxy } = useCurrentInstance()
 const router = RouterUtil.instance()
 
@@ -140,6 +156,51 @@ const menuList = ref<Array<MenuItem>>([
         value: '菜单4'
     }
 ])
+
+// editor instance, use `shallowRef`
+const editorRef = shallowRef()
+
+
+// content HTML
+const valueHtml = ref('<p>hello</p>')
+
+watch(() => valueHtml.value, (val) => {
+    console.log('html change ', val)
+})
+const mode = 'default'
+// Simulate ajax async set HTML
+onMounted(() => {
+    setTimeout(() => {
+    }, 1500)
+})
+
+const toolbarConfig = {}
+const editorConfig = {
+    placeholder: 'Type here...',
+    MENU_CONF: {
+        uploadImage: {
+            server: '/upload-img', // 这里设置你的上传图片接口
+            // 其他图片上传配置...
+        },
+        uploadVideo: {
+            server: '/upload-video', // 这里设置你的上传视频接口
+            // 其他视频上传配置...
+        }
+    },
+}
+
+// Timely destroy `editor` before vue component destroy.
+onBeforeUnmount(() => {
+    const editor = editorRef.value
+    if (editor == null) return
+    editor.destroy()
+})
+
+const handleCreated = (editor) => {
+    editorRef.value = editor // record editor instance
+    editorRef.value.config.uploadImgServer = '/upload-img'
+    editorRef.value.config.uploadVideoServer = '/api/upload-video'
+}
 
 const visible = ref(false)
 
