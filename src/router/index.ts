@@ -48,12 +48,22 @@ const routers: Array<RouteRecordRaw> = [
         name: 'GS',
         component: () =>
             import('@/views/genshin-animation/genshin-animation.vue')
-    },{
+    },
+    {
         path: '/phaser',
         name: 'Phaser',
-        component: () =>
-            import('@/views/phaser/phaser-demo.vue')
+        component: () => import('@/views/phaser/phaser-demo.vue')
     },
+    {
+        path: '/canvas',
+        name: 'Canvas',
+        component: () => import('@/views/canvas-study/canvas-study.vue')
+    },
+    {
+        path: '/antX6',
+        name: 'AntX6',
+        component: () => import('@/views/antx6/antx6.vue')
+    }
 ]
 
 const routerHistory: RouterHistory = createWebHistory(import.meta.env.BASE_URL)

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
+    "@antv/x6": "^2.18.1",
     "@types/forge-viewer": "^7.69.5",
     "@vueuse/core": "^8.7.3",
     "@wangeditor/editor": "^5.1.1",
@@ -30,6 +31,7 @@
     "ramda": "^0.28.0",
     "rxjs": "^7.5.5",
     "three": "^0.162.0",
+    "@esotericsoftware/spine-threejs": "^4.2.56",
     "vue": "^3.2.25",
     "vue-router": "^4.0.15",
     "vuex": "^4.0.2"

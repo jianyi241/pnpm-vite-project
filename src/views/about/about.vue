@@ -33,7 +33,7 @@
                 :mode="mode"
             />
             <Editor
-                style="height: 500px; overflow-y: hidden;"
+                style="height: 500px; overflow-y: hidden"
                 v-model="valueHtml"
                 :defaultConfig="editorConfig"
                 :mode="mode"
@@ -121,7 +121,14 @@
 </template>
 
 <script setup lang="ts">
-import {ref, onUnmounted, onMounted, onBeforeUnmount, shallowRef, watch} from 'vue'
+import {
+    ref,
+    onUnmounted,
+    onMounted,
+    onBeforeUnmount,
+    shallowRef,
+    watch
+} from 'vue'
 import { useRouter } from 'vue-router'
 import DropDown from '../../components/DropDown.vue'
 import { MenuItem } from '../../model/components/DropDown'
@@ -132,7 +139,7 @@ import Modal from '../../components/Modal.vue'
 import './about.js'
 // import './demo.ts'
 import './genshin-resources/index'
-import {Editor, Toolbar} from '@wangeditor/editor-for-vue'
+import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 import '@wangeditor/editor/dist/css/style.css'
 const { globalProperties, proxy } = useCurrentInstance()
 const router = RouterUtil.instance()
@@ -160,18 +167,19 @@ const menuList = ref<Array<MenuItem>>([
 // editor instance, use `shallowRef`
 const editorRef = shallowRef()
 
-
 // content HTML
 const valueHtml = ref('<p>hello</p>')
 
-watch(() => valueHtml.value, (val) => {
-    console.log('html change ', val)
-})
+watch(
+    () => valueHtml.value,
+    (val) => {
+        console.log('html change ', val)
+    }
+)
 const mode = 'default'
 // Simulate ajax async set HTML
 onMounted(() => {
-    setTimeout(() => {
-    }, 1500)
+    setTimeout(() => {}, 1500)
 })
 
 const toolbarConfig = {}
@@ -179,14 +187,14 @@ const editorConfig = {
     placeholder: 'Type here...',
     MENU_CONF: {
         uploadImage: {
-            server: '/upload-img', // 这里设置你的上传图片接口
+            server: '/upload-img' // 这里设置你的上传图片接口
             // 其他图片上传配置...
         },
         uploadVideo: {
-            server: '/upload-video', // 这里设置你的上传视频接口
+            server: '/upload-video' // 这里设置你的上传视频接口
             // 其他视频上传配置...
         }
-    },
+    }
 }
 
 // Timely destroy `editor` before vue component destroy.
@@ -286,7 +294,7 @@ const showLoading = () => {
     &.font-roboto_regular {
         font-family: RobotoRegular;
         background: linear-gradient(
-            85deg,
+            90deg,
             #f98e2b 0.16%,
             #f88a33 5.81%,
             #f57459 37%,
